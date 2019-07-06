@@ -33,12 +33,12 @@ const Battle = ({ question, subQuestion, user, opponent }) => {
                     <Typography variant="h5">{question}</Typography>
                     <Typography variant="body1">{subQuestion}</Typography>
                 </Grid>
-                <Grid item xs={6} className={styles.flex} justify="flex-end">
+                <Grid item xs={6} className={styles.flex}>
                     <Button color="primary" variant="contained" fullWidth>
                         {locationsMap[user.location]}
                     </Button>
                 </Grid>
-                <Grid item xs={6} className={styles.flex} justify="flex-start">
+                <Grid item xs={6} className={styles.flex}>
                     <Button color="primary" variant="contained" fullWidth>
                         {locationsMap[opponent.location]}
                     </Button>
