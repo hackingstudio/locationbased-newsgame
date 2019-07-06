@@ -3,4 +3,4 @@ import { storiesOf } from "@storybook/react";
 
 import MatchMaking from "./matchMaking.jsx";
 
-storiesOf("MatchMaking", module).add("default", () => <MatchMaking />);
+storiesOf("Templates / MatchMaking", module).add("default", () => <MatchMaking />);

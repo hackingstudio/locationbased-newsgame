@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 
 import Landing from './landing.jsx';
 
-storiesOf('Landing', module)
+storiesOf('Templates / Landing', module)
     .add('default', () => (
-    <Landing />
-));
+        <Landing />
+    ));
