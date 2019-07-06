@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useReducer } from "react";
 import TextField from "@material-ui/core/TextField";
 import Container from "@material-ui/core/Container";
-import { ApolloClient } from "apollo-client";
+import { ApolloClient, ApolloError } from "apollo-client";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { createHttpLink } from "apollo-link-http";
 import gql from "graphql-tag";
@@ -51,16 +51,28 @@ interface DataStats {
 interface Data {
   year?: number;
   stats?: DataStats[];
+  error?: string;
+  query?: string;
 }
 
 const dataReducer = (state: Data, action): Data => {
   switch (action.type) {
-    case "SET_DATA":
+    case "SET_DATA": {
+      const { year, stats, query } = action.payload;
       return {
         ...state,
-        year: action.payload.year,
-        stats: action.payload.stats
+        year,
+        stats,
+        query
       };
+    }
+    case "ERROR": {
+      const { error, query } = action.payload;
+      return {
+        error,
+        query
+      };
+    }
     default:
       return state;
   }
@@ -68,52 +80,73 @@ const dataReducer = (state: Data, action): Data => {
 
 const DataExplorer: React.SFC = props => {
   const [statID, setStatID] = useState("");
-  const [{ year, stats }, dispatch] = useReducer(dataReducer, {});
+  const [data, dispatch] = useReducer(dataReducer, {});
   const execute = useCallback(
     async e => {
       e.preventDefault();
-      const query = buildCityQuery(statID);
-      const results = await Promise.all(
-        Object.entries(cities).map(async ([name, { id }]) => {
-          const { data }: { data: QueryResult } = await client.query({
-            query,
-            variables: { nuts3: id }
-          });
-          return { id, name, data };
-        })
-      );
-      console.log(results);
-      const lowYear = results.reduce((year, { data }) => {
-        const { stat } = data.region;
-        const lastYear = stat[stat.length - 1].year;
-        if (lastYear < year) {
-          return lastYear;
+      let queryString = "";
+      try {
+        const query = buildCityQuery(statID);
+        queryString = query.loc.source.body;
+        const results = await Promise.all(
+          Object.entries(cities).map(async ([name, { id }]) => {
+            const { data }: { data: QueryResult } = await client.query({
+              query,
+              variables: { nuts3: id }
+            });
+            return { id, name, data };
+          })
+        );
+        console.log(results);
+        const lowYear = results.reduce((year, { data }) => {
+          const { stat } = data.region;
+          const lastYear = stat[stat.length - 1].year;
+          if (lastYear < year) {
+            return lastYear;
+          }
+          return year;
+        }, new Date().getFullYear());
+        const stats: DataStats[] = results.map(({ name, data }) => {
+          const set = data.region.stat.find(({ year }) => year === lowYear);
+          if (!set) {
+            console.warn("year not found for city:", name);
+          }
+          const value = set ? set.value : 0;
+          return {
+            name,
+            value
+          };
+        });
+        console.log("year:", lowYear);
+        console.log("stats:", stats);
+        dispatch({
+          type: "SET_DATA",
+          payload: {
+            year: lowYear,
+            stats,
+            query: queryString
+          }
+        });
+      } catch (error) {
+        let msg = error.message;
+        if (error instanceof ApolloError && error.networkError) {
+          const { result } = error.networkError as any;
+          console.error(result);
+          msg = result.errors.map(err => err.message).join("\n");
         }
-        return year;
-      }, new Date().getFullYear());
-      const stats: DataStats[] = results.map(({ name, data }) => {
-        const set = data.region.stat.find(({ year }) => year === lowYear);
-        if (!set) {
-          console.warn("year not found for city:", name);
-        }
-        const value = set ? set.value : 0;
-        return {
-          name,
-          value
-        };
-      });
-      console.log("year:", lowYear);
-      console.log("stats:", stats);
-      dispatch({
-        type: "SET_DATA",
-        payload: {
-          year: lowYear,
-          stats
-        }
-      });
+        dispatch({
+          type: "ERROR",
+          payload: {
+            error: msg,
+            query: queryString
+          }
+        });
+      }
     },
     [statID]
   );
+
+  const { year, stats, error, query } = data;
   return (
     <Container maxWidth="sm">
       <form onSubmit={execute}>
@@ -122,6 +155,18 @@ const DataExplorer: React.SFC = props => {
           value={statID}
           onChange={e => setStatID(e.target.value)}
         />
+        {query && (
+          <>
+            <h3>Query:</h3>
+            <pre>{query}</pre>
+          </>
+        )}
+        {error && (
+          <>
+            <h3 style={{ color: "red" }}>Error:</h3>
+            <code>{error}</code>
+          </>
+        )}
         {stats && year && (
           <div>
             <p>Year: {year}</p>
