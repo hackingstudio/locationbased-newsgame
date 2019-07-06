@@ -27,18 +27,18 @@ const Battle = ({ question, subQuestion, user, opponent }) => {
                     <PlayerStatus player={user} />
                 </Grid>
                 <Grid item xs={6}>
-                    <PlayerStatus player={opponent} />
+                    <PlayerStatus player={opponent} reverse />
                 </Grid>
                 <Grid item xs={12}>
                     <Typography variant="h5">{question}</Typography>
                     <Typography variant="body1">{subQuestion}</Typography>
                 </Grid>
-                <Grid item xs={6} className={styles.flex}>
+                <Grid item xs={6}>
                     <Button color="primary" variant="contained" fullWidth>
                         {locationsMap[user.location]}
                     </Button>
                 </Grid>
-                <Grid item xs={6} className={styles.flex}>
+                <Grid item xs={6}>
                     <Button color="primary" variant="contained" fullWidth>
                         {locationsMap[opponent.location]}
                     </Button>
