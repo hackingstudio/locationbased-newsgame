@@ -13,7 +13,12 @@ import Grid from "@material-ui/core/es/Grid";
 import Paper from "@material-ui/core/es/Paper";
 import Avatar from "@material-ui/core/es/Avatar";
 import CountDown from "../../components/countDown";
+import CompareArrows from '@material-ui/icons/CompareArrows';
+import EuroSymbol from '@material-ui/icons/EuroSymbol';
+import LocalFlorist from '@material-ui/icons/LocalFlorist';
+import LocalHospital from '@material-ui/icons/LocalHospital';
 import * as locations from "../../assets/locations.json";
+import styles from "./categories.module.scss";
 
 const Categories = ({ choosing }) => {
     const [timeLeft, setTimeLeft] = useState(true);
@@ -23,34 +28,43 @@ const Categories = ({ choosing }) => {
             clearTimeout(timer);
         };
     }, []);
-    const categories = ["Bildung", "Umwelt", "Arbeit& Wirtschaft", "Gesundheit"];
+    const categories = [
+        { name: "Bildung", icon: <CompareArrows className={styles.buttonIcon} /> },
+        { name: "Umwelt", icon: <LocalFlorist className={styles.buttonIcon} /> },
+        { name: "Arbeit & Wirtschaft", icon: <EuroSymbol className={styles.buttonIcon} /> },
+        { name: "Gesundheit", icon: <LocalHospital className={styles.buttonIcon} /> }
+    ];
     return (
         <>
             <CountDown />
             <Grid container spacing={3}>
                 {choosing && (
-                    <Typography variant="h3" component="h2">
-                        Wähle eine Kategorie:
-                    </Typography>
+                    <Grid item xs={12}>
+                        <Typography variant="h3" component="h2">
+                            Wähle eine Kategorie:
+                        </Typography>
+                    </Grid>
                 )}
                 {!choosing && (
-                    <Typography variant="h3" component="h2">
-                        Dein Gegner wählt eine Kategorie!
-                    </Typography>
+                    <Grid item xs={12}>
+                        <Typography variant="h3" component="h2">
+                            Dein Gegner wählt eine Kategorie!
+                        </Typography>
+                    </Grid>
                 )}
-                <Grid item xs={12}>
-                    {categories.map(category => (
+                {categories.map(category => (
+                    <Grid item xs={12}key={category.name} >
                         <Button
                             color={!timeLeft ? "secondary" : "primary"}
                             variant="contained"
                             disabled={!choosing && timeLeft}
                             fullWidth
-                            key={category}
                         >
-                            {category}
+                            {category.icon}
+                            {category.name}
                         </Button>
-                    ))}
-                </Grid>
+                    </Grid>
+                ))}
             </Grid>
         </>
     );
