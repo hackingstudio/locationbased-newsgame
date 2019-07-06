@@ -5,39 +5,50 @@ import Button from "@material-ui/core/es/Button";
 import Grid from "@material-ui/core/es/Grid";
 import Paper from "@material-ui/core/es/Paper";
 import Avatar from "@material-ui/core/es/Avatar";
+import CircularProgress from "@material-ui/core/es/CircularProgress";
 
 import CountDown from "../../components/countDown";
+import PlayerCard from "../../components/playerCard";
 
-const MatchMaking = () => {
-    const [opponentFound, setOpponentFound] = useState(false);
+const MatchMaking = ({ player }) => {
     const [opponent, setOpponent] = useState(null);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            if (!opponent) {
+                setOpponent({ name: "Robo-Jannes", location: "Bremen" });
+            }
+        }, 10000);
+        return () => {
+            clearTimeout(timer);
+        };
+    }, []);
+
+    useEffect(() => {
+        if (opponent) {
+            const timer = setTimeout(() => {
+                alert(`Starting game`);
+            }, 3000);
+            return () => {
+                clearTimeout(timer);
+            };
+        }
+    }, [opponent]);
 
     return (
         <>
-            <CountDown />
+            {opponent && <CountDown time={3} />}
             <Grid container spacing={3}>
-                <Typography variant="h3" component="h2">
-                    Dein Gegner:
-                </Typography>
                 <Grid item xs={12}>
-                    {opponentFound && (
-                        <Paper>
-                            <Grid container spacing={1}>
-                                <Avatar>RJ</Avatar>
-                                <Typography variant="h4" component="h3">
-                                    {opponent.name}
-                                </Typography>
-                            </Grid>
-                            <Typography variant="h5">{opponent.location}</Typography>
-                        </Paper>
-                    )}
+                    <PlayerCard player={player} />
                 </Grid>
                 <Grid item xs={12}>
-                    {opponentFound && (
-                        <Button color="primary" variant="contained">
-                            Weiter
-                        </Button>
-                    )}
+                    <Typography variant="h3" component="h2">
+                        Suche Gegner...
+                    </Typography>
+                </Grid>
+                <Grid item xs={12}>
+                    {opponent ? <PlayerCard player={opponent} /> : <CircularProgress />}
                 </Grid>
             </Grid>
         </>
