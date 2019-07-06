@@ -2,5 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `Revier-Derby`,
   },
-  plugins: [],
+  plugins: [
+    'gatsby-plugin-sass',
+  ],
 };
