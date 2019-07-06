@@ -2,15 +2,9 @@ import React, { useState, useCallback, useReducer } from "react";
 import TextField from "@material-ui/core/TextField";
 import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
-import { ApolloClient, ApolloError } from "apollo-client";
-import { InMemoryCache } from "apollo-cache-inmemory";
-import { createHttpLink } from "apollo-link-http";
+import { ApolloError } from "apollo-client";
 import gql from "graphql-tag";
-
-const client = new ApolloClient({
-  link: createHttpLink({ uri: "https://api-next.datengui.de/graphql" }),
-  cache: new InMemoryCache()
-});
+import { fetchValues } from "../hooks/datenguide";
 
 const buildCityQuery = (statID: string, filter?: string) => {
   return gql`
@@ -34,15 +28,6 @@ const cities = {
     id: "09564"
   }
 };
-
-interface QueryResult {
-  region: {
-    stat: {
-      year: number;
-      value: number;
-    }[];
-  };
-}
 
 interface DataStats {
   name: string;
@@ -116,38 +101,10 @@ const DataExplorer: React.SFC<{
       try {
         const query = buildCityQuery(statID, filter);
         queryString = query.loc.source.body;
-        const results = await Promise.all(
-          Object.entries(cities).map(async ([name, { id }]) => {
-            const { data }: { data: QueryResult } = await client.query({
-              query,
-              variables: { nuts3: id }
-            });
-            return { id, name, data };
-          })
+        const { stats, lowYear } = await fetchValues(
+          query,
+          Object.values(cities).map(c => c.id)
         );
-        console.log(results);
-        const lowYear = results.reduce((year, { data, name }) => {
-          const { stat } = data.region;
-          if (stat.length === 0) {
-            throw new Error(`Statistics for ${name} is empty!`);
-          }
-          const lastYear = stat[stat.length - 1].year;
-          if (lastYear < year) {
-            return lastYear;
-          }
-          return year;
-        }, new Date().getFullYear());
-        const stats: DataStats[] = results.map(({ name, data }) => {
-          const set = data.region.stat.find(({ year }) => year === lowYear);
-          if (!set) {
-            console.warn("year not found for city:", name);
-          }
-          const value = set ? set.value : 0;
-          return {
-            name,
-            value
-          };
-        });
         dispatch({
           type: "FINISHED",
           payload: {
