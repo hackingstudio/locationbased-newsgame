@@ -27,8 +27,8 @@ const PlayerStatus = ({ player }) => (
                 {player.name}
             </Typography>
             <div className={styles.dots}>
-                {player.score.map(won => (
-                    <div className={classNames(styles.dot, won ? styles.won : styles.lost)} />
+                {player.score.map((won, i) => (
+                    <div key={i} className={classNames(styles.dot, won ? styles.won : styles.lost)} />
                 ))}
             </div>
         </Grid>
