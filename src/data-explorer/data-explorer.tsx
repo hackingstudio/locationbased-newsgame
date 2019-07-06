@@ -145,8 +145,6 @@ const DataExplorer: React.SFC = props => {
             value
           };
         });
-        console.log("year:", lowYear);
-        console.log("stats:", stats);
         dispatch({
           type: "FINISHED",
           payload: {
@@ -227,31 +225,43 @@ const DataExplorer: React.SFC = props => {
           Build
         </Button>
       </form>
-      {error && (
-        <>
-          <h3 style={{ color: "red" }}>Error:</h3>
-          <code>{error}</code>
-        </>
-      )}
-      {stats && year && (
-        <div>
-          <p>Year: {year}</p>
-          <h4>Werte:</h4>
-          {stats.map(({ name, value }) => (
-            <p>
-              {name}: {value}
-            </p>
-          ))}
-        </div>
-      )}
-      {query && (
-        <>
-          <h3>Query:</h3>
-          <pre>{query}</pre>
-          <h3>Definition:</h3>
-          <pre>{buildContent(query, question, description, unit)}</pre>
-        </>
-      )}
+      <article style={{ fontFamily: "Roboto, sans-serif", marginTop: "4rem" }}>
+        {error && (
+          <>
+            <h3 style={{ color: "red" }}>Error:</h3>
+            <code>{error}</code>
+          </>
+        )}
+        {stats && year && (
+          <div
+            style={{
+              border: "3px solid rgba(0,0,0,0.5)",
+              borderRadius: ".5rem",
+              fontSize: "3rem",
+              textAlign: "center"
+            }}
+          >
+            <p>{year}</p>
+            <div style={{ display: "flex", justifyContent: "space-around" }}>
+              {stats.map(({ name, value }) => (
+                <p>
+                  {name}
+                  <br />
+                  {value}
+                </p>
+              ))}
+            </div>
+          </div>
+        )}
+        {query && (
+          <>
+            <h3>Query</h3>
+            <pre>{query}</pre>
+            <h3>Definition</h3>
+            <pre>{buildContent(query, question, description, unit)}</pre>
+          </>
+        )}
+      </article>
     </Container>
   );
 };
