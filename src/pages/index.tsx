@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import useGameController, { Step, GameController } from "../hooks/controller";
 import Landing from "../templates/landing/landing";
 import MatchMaking from "../templates/matchMaking/matchMaking";
+import Category from "../templates/categories/categories";
 
 interface IndexPageProps {}
 
@@ -11,6 +12,8 @@ const renderStep = (step: Step): React.FC<ReturnType<GameController>> => {
       return Landing;
     case Step.opponents:
       return MatchMaking;
+    case Step.category:
+      return Category;
     default:
       return () => <h1>Not found</h1>;
   }
@@ -19,7 +22,7 @@ const renderStep = (step: Step): React.FC<ReturnType<GameController>> => {
 const localStorageKey = "GAME_STATE";
 let prevState;
 try {
-  prevState = JSON.parse(window.localStorage.getItem(localStorageKey) || "");
+  prevState = JSON.parse(window.localStorage.getItem(localStorageKey) || "");
   if (!prevState) {
     prevState = undefined;
   }
