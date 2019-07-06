@@ -45,6 +45,7 @@ const Categories = ({ choosing }) => {
                             variant="contained"
                             disabled={!choosing && timeLeft}
                             fullWidth
+                            key={category}
                         >
                             {category}
                         </Button>
