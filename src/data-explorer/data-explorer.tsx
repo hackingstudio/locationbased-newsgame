@@ -4,7 +4,7 @@ import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
 import { ApolloError } from "apollo-client";
 import gql from "graphql-tag";
-import { fetchValues } from "../hooks/datenguide";
+import { fetchValues, StatResult } from "../hooks/datenguide";
 import { locationsMap } from "../assets/locations";
 
 const buildCityQuery = (statID: string, filter?: string) => {
@@ -30,14 +30,9 @@ const cities = {
   }
 };
 
-interface DataStats {
-  name: string;
-  value: number;
-}
-
 interface Data {
   year?: number;
-  stats?: DataStats[];
+  stats?: StatResult[];
   error?: string;
   query?: string;
 }
@@ -204,11 +199,11 @@ const DataExplorer: React.SFC<{
           >
             <p>{year}</p>
             <div style={{ display: "flex", justifyContent: "space-around" }}>
-              {Object.keys(stats).map(id => (
+              {stats.map(({ id, value }) => (
                 <p key={id}>
                   {locationsMap[id]}
                   <br />
-                  {stats[id]}
+                  {value}
                 </p>
               ))}
             </div>

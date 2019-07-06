@@ -17,7 +17,10 @@ export interface QueryResult {
   };
 }
 
-export type StatMap = Record<string, number>;
+export interface StatResult {
+  id: string;
+  value: number;
+};
 
 class DataMissingError extends Error {
   public id: string;
@@ -51,14 +54,16 @@ export const fetchValues = async (query: GraphQLRequest, locations: string[]) =>
     return year;
   }, new Date().getFullYear());
 
-  const stats: StatMap = results.reduce((agg, { id, data }) => {
+  const stats: StatResult[] = results.map(({ id, data }) => {
     const { value = "" } = data.region.stat.find(({ year }) => year === lowYear) || {};
     if (!value) {
       throw new DataMissingError(`Data for last year not available in ${id}`, id);
     }
-    agg[id] = value;
-    return agg;
-  }, {});
+    return {
+      id,
+      value,
+    };
+  });
 
   return {
     stats,
