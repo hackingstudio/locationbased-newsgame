@@ -6,14 +6,12 @@ import TextField from '@material-ui/core/es/TextField';
 import Select from '@material-ui/core/es/Select';
 import MenuItem from '@material-ui/core/es/MenuItem';
 import Button from '@material-ui/core/es/Button';
-import FormControl from '@material-ui/core/es/FormControl';
-import FormHelperText from '@material-ui/core/es/FormHelperText';
 import Grid from '@material-ui/core/es/Grid';
 import locations from '../../assets/locations.json';
 
 const sortedLocations = locations.sort((a, b) => a.name > b.name ? 1 : -1);
 const Landing = () => {
-    const [location, handleLocationChanged]=useFormField('');
+    const [location, handleLocationChanged] = useFormField('');
     return (
         <>
             <Grid container spacing={3}>
