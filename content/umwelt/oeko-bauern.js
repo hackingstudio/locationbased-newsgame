@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import gql from '../bildung/node_modules/graphql-tag';
 
 export default {
   query: gql`
