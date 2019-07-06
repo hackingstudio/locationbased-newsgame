@@ -1,0 +1,43 @@
+.crest {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    div {
+        height: 50px;
+        img {
+            height: 100%;
+        }
+    }
+}
+
+.dots {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.dot {
+    display: block;
+    border-radius: 50%;
+    height: 10px;
+    width: 10px;
+    margin: 3px;
+}
+
+.won {
+    background: {
+        color: green;
+    }
+}
+
+.lost {
+    background: {
+        color: red;
+    }
+}
+
+.unknown {
+    background: {
+        color: grey;
+    }
+}

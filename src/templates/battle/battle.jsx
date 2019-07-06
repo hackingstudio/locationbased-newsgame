@@ -13,6 +13,7 @@ import Grid from "@material-ui/core/es/Grid";
 import Paper from "@material-ui/core/es/Paper";
 import Avatar from "@material-ui/core/es/Avatar";
 import CountDown from "../../components/countDown";
+import PlayerStatus from "../../components/playerStatus";
 
 import { locationsMap } from "../../assets/locations";
 import styles from "./battle.module.scss";
@@ -22,6 +23,12 @@ const Battle = ({ question, subQuestion, user, opponent }) => {
         <>
             <CountDown />
             <Grid container spacing={3}>
+                <Grid item xs={6}>
+                    <PlayerStatus player={user} />
+                </Grid>
+                <Grid item xs={6}>
+                    <PlayerStatus player={opponent} />
+                </Grid>
                 <Grid item xs={12}>
                     <Typography variant="h5">{question}</Typography>
                     <Typography variant="body1">{subQuestion}</Typography>
