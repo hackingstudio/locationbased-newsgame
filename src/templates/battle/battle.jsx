@@ -15,20 +15,24 @@ import Avatar from "@material-ui/core/es/Avatar";
 import CountDown from "../../components/countDown";
 
 import { locationsMap } from "../../assets/locations";
+import styles from "./battle.module.scss";
 
-const Battle = ({ question, user, opponent }) => {
+const Battle = ({ question, subQuestion, user, opponent }) => {
     return (
         <>
             <CountDown />
             <Grid container spacing={3}>
-                <Paper>
-                    <Typography variant="body1">{question}</Typography>
-                </Paper>
                 <Grid item xs={12}>
-                    <Button color="primary" variant="contained">
+                    <Typography variant="h5">{question}</Typography>
+                    <Typography variant="body1">{subQuestion}</Typography>
+                </Grid>
+                <Grid item xs={6} className={styles.flex} justify="flex-end">
+                    <Button color="primary" variant="contained" fullWidth>
                         {locationsMap[user.location]}
                     </Button>
-                    <Button color="primary" variant="contained">
+                </Grid>
+                <Grid item xs={6} className={styles.flex} justify="flex-start">
+                    <Button color="primary" variant="contained" fullWidth>
                         {locationsMap[opponent.location]}
                     </Button>
                 </Grid>
@@ -39,8 +43,7 @@ const Battle = ({ question, user, opponent }) => {
 
 Battle.propTypes = {
     question: PropTypes.string,
-    ownCity: PropTypes.string,
-    opponentCity: PropTypes.string
+    subQuestion: PropTypes.string
 };
 
 export default Battle;
