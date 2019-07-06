@@ -78,10 +78,34 @@ const dataReducer = (state: Data, action): Data => {
   }
 };
 
+const buildContent = (
+  query: String,
+  question: String,
+  description: String,
+  unit: String
+) =>
+  `import gql from 'graphql-tag';
+
+export default {
+  query: gql\`${query}\`,
+  content: {
+    question: "${question}",
+    description: "${description}",
+    unit: "${unit}",
+  },
+};
+`;
+
 const DataExplorer: React.SFC = props => {
   const [statID, setStatID] = useState("");
   const [filter, setFilter] = useState("");
+
+  const [question, setQuestion] = useState("");
+  const [description, setDescription] = useState("");
+  const [unit, setUnit] = useState("");
+
   const [data, dispatch] = useReducer(dataReducer, {});
+
   const execute = useCallback(
     async e => {
       e.preventDefault();
@@ -172,8 +196,35 @@ const DataExplorer: React.SFC = props => {
           margin="normal"
           fullWidth
         />
+        <TextField
+          label="Question"
+          placeholder="shown to user"
+          value={question}
+          onChange={e => setQuestion(e.target.value)}
+          variant="outlined"
+          margin="normal"
+          fullWidth
+        />
+        <TextField
+          label="Description"
+          placeholder="which statistic is used?"
+          value={description}
+          onChange={e => setDescription(e.target.value)}
+          variant="outlined"
+          margin="normal"
+          fullWidth
+        />
+        <TextField
+          label="Unit"
+          placeholder="shown with value"
+          value={unit}
+          onChange={e => setUnit(e.target.value)}
+          variant="outlined"
+          margin="normal"
+          fullWidth
+        />
         <Button type="submit" variant="outlined">
-          Start Query
+          Build
         </Button>
       </form>
       {error && (
@@ -197,6 +248,8 @@ const DataExplorer: React.SFC = props => {
         <>
           <h3>Query:</h3>
           <pre>{query}</pre>
+          <h3>Definition:</h3>
+          <pre>{buildContent(query, question, description, unit)}</pre>
         </>
       )}
     </Container>
