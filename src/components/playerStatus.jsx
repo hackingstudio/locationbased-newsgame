@@ -9,9 +9,9 @@ import { locationsMap } from "../assets/locations";
 import unicoat from "../assets/unicoat.png";
 import styles from "./playerStatus.module.scss";
 
-const PlayerStatus = ({ player }) => (
-    <Grid container spacing={2}>
-        <Grid item xs={4}>
+const PlayerStatus = ({ player, reverse = false }) => (
+    <Grid container spacing={2} className={reverse ? styles.reverse : ""}>
+        <Grid item>
             <div className={styles.crest}>
                 <div>
                     <img src={unicoat} />
@@ -22,11 +22,11 @@ const PlayerStatus = ({ player }) => (
             </div>
         </Grid>
 
-        <Grid item xs={8}>
+        <Grid item className={classNames(reverse ? styles.playerReverse : "", styles.player)}>
             <Typography variant="h6" component="h3">
                 {player.name}
             </Typography>
-            <div className={styles.dots}>
+            <div className={classNames(reverse ? styles.dotsReverse : "", styles.dots)}>
                 {player.score.map((won, i) => (
                     <div key={i} className={classNames(styles.dot, won ? styles.won : styles.lost)} />
                 ))}
