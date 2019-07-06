@@ -157,7 +157,6 @@ export const initialRoundState = {
 }
 
 export const initialGameState = {
-  user: null,
   opponent: null,
   round: -1,
   points: {
@@ -169,6 +168,7 @@ export const initialGameState = {
 
 export const initialState: GameState = {
   step: Step.onboarding,
+  user: null,
   ...initialGameState,
 }
 
