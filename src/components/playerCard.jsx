@@ -6,6 +6,7 @@ import Avatar from "@material-ui/core/es/Avatar";
 import Typography from "@material-ui/core/es/Typography";
 
 import unicoat from "../assets/unicoat.png";
+import { locationsMap } from "../assets/locations";
 import styles from "./playerCard.module.scss";
 
 const PlayerCard = ({ player }) => (
@@ -17,7 +18,7 @@ const PlayerCard = ({ player }) => (
       </Typography>
     </Grid>
     <img className={styles.crest} src={unicoat} />
-    <Typography variant="h5">{player.location}</Typography>
+    <Typography variant="h5">{locationsMap[player.location]}</Typography>
   </Paper>
 );
 
