@@ -13,9 +13,10 @@ import Grid from "@material-ui/core/es/Grid";
 import Paper from "@material-ui/core/es/Paper";
 import Avatar from "@material-ui/core/es/Avatar";
 import CountDown from "../../components/countDown";
-import * as locations from "../../assets/locations.json";
 
-const Battle = ({ question, ownCity, opponentCity }) => {
+import { locationsMap } from "../../assets/locations";
+
+const Battle = ({ question, user, opponent }) => {
     return (
         <>
             <CountDown />
@@ -25,10 +26,10 @@ const Battle = ({ question, ownCity, opponentCity }) => {
                 </Paper>
                 <Grid item xs={12}>
                     <Button color="primary" variant="contained">
-                        {ownCity}
+                        {locationsMap[user.location]}
                     </Button>
                     <Button color="primary" variant="contained">
-                        {opponentCity}
+                        {locationsMap[opponent.location]}
                     </Button>
                 </Grid>
             </Grid>
