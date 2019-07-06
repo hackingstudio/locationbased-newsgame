@@ -19,7 +19,8 @@
         "noEmit": true,
         "allowSyntheticDefaultImports": true,
         "experimentalDecorators": true,
-        "emitDecoratorMetadata": true
+        "emitDecoratorMetadata": true,
+        "resolveJsonModule": true
     },
     "include": [
         "src/**/*"
