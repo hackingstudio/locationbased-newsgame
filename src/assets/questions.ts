@@ -1,5 +1,10 @@
 import { categories, Category } from "./categories";
-import { Question } from "../hooks/controller";
+
+export interface Question {
+  question: string;
+  description: string;
+  unit: string;
+}
 
 export interface ContentDefinition {
   content: Question;
