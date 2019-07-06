@@ -96,9 +96,12 @@ export default {
 };
 `;
 
-const DataExplorer: React.SFC = props => {
-  const [statID, setStatID] = useState("");
-  const [filter, setFilter] = useState("");
+const DataExplorer: React.SFC<{
+  defaultID?: string;
+  defaultFilter?: string;
+}> = ({ defaultID = "", defaultFilter = "" }) => {
+  const [statID, setStatID] = useState(defaultID);
+  const [filter, setFilter] = useState(defaultFilter);
 
   const [question, setQuestion] = useState("");
   const [description, setDescription] = useState("");
