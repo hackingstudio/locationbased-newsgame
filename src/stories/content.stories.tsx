@@ -1,22 +1,9 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 import { categories } from "../assets/categories";
+import questions, { questionList } from "../assets/questions";
 
-const req = require.context("../../content", true, /\.js$/);
-const questions: { filename: string; q: ContentDefinition }[] = req
-  .keys()
-  .map(filename => ({ filename, q: req(filename).default }));
-
-interface ContentDefinition {
-  content: {
-    question: string;
-    description: string;
-    unit: string;
-  };
-  query: any;
-}
-
-const renderQuestions = ({ q: { content, query } }) => (
+const renderQuestions = ({ content, query }) => (
   <div>
     <h2>{content.question}</h2>
     <p style={{ textTransform: "uppercase", color: "grey" }}>
@@ -27,14 +14,11 @@ const renderQuestions = ({ q: { content, query } }) => (
 );
 
 const stories = storiesOf("Content", module).add("all", () => {
-  return questions.map(renderQuestions);
+  return questionList.map(({ q }) => renderQuestions(q));
 });
 
-Object.keys(categories).forEach(cat =>
+Object.entries(questions).forEach(([cat, catQuestions]) =>
   stories.add(categories[cat], () => {
-    const catQuestions = questions.filter(({ filename }) =>
-      filename.startsWith(`./${cat}`)
-    );
     return catQuestions.map(renderQuestions);
   })
 );
