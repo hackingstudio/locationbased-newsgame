@@ -58,10 +58,9 @@ interface Data {
 
 const dataReducer = (state: Data, action): Data => {
   switch (action.type) {
-    case "SET_DATA": {
+    case "FINISHED": {
       const { year, stats, query } = action.payload;
       return {
-        ...state,
         year,
         stats,
         query
@@ -125,7 +124,7 @@ const DataExplorer: React.SFC = props => {
         console.log("year:", lowYear);
         console.log("stats:", stats);
         dispatch({
-          type: "SET_DATA",
+          type: "FINISHED",
           payload: {
             year: lowYear,
             stats,
