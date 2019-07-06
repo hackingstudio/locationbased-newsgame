@@ -228,7 +228,7 @@ const DataExplorer: React.SFC<{
           Build
         </Button>
       </form>
-      <article style={{ fontFamily: "Roboto, sans-serif", marginTop: "4rem" }}>
+      <article style={{ marginTop: "4rem" }}>
         {error && (
           <>
             <h3 style={{ color: "red" }}>Error:</h3>
