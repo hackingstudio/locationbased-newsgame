@@ -44,7 +44,7 @@ const MatchMaking = ({ player }) => {
                 </Grid>
                 <Grid item xs={12}>
                     <Typography variant="h3" component="h2">
-                        Suche Gegner...
+                        {!opponent ? `Suche Gegner...` : `Gegner gefunden!`}
                     </Typography>
                 </Grid>
                 <Grid item xs={12}>
