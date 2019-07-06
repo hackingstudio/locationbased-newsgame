@@ -1,35 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
+import PropTypes from 'prop-types';
 
 import Typography from "@material-ui/core/es/Typography";
-import Button from "@material-ui/core/es/Button";
 import Grid from "@material-ui/core/es/Grid";
-import Paper from "@material-ui/core/es/Paper";
-import Avatar from "@material-ui/core/es/Avatar";
 import CircularProgress from "@material-ui/core/es/CircularProgress";
 
 import CountDown from "../../components/countDown";
 import PlayerCard from "../../components/playerCard";
 
-import styles from "./matchMaking.module.scss";
-
-const MatchMaking = ({ player }) => {
-  const [opponent, setOpponent] = useState(null);
-
+const MatchMaking = ({ user, opponent, findOpponent, startRound }) => {
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (!opponent) {
-        setOpponent({ name: "Robo-Jannes", location: "Bremen" });
-      }
-    }, 10000);
-    return () => {
-      clearTimeout(timer);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (opponent) {
+    if (!opponent) {
       const timer = setTimeout(() => {
-        alert(`Starting game`);
+        findOpponent();
+      }, 10000);
+      return () => {
+        clearTimeout(timer);
+      };
+    } else {
+      const timer = setTimeout(() => {
+        startRound();
       }, 3000);
       return () => {
         clearTimeout(timer);
@@ -56,5 +46,12 @@ const MatchMaking = ({ player }) => {
     </>
   );
 };
+
+MatchMaking.propTypes = {
+  user: PropTypes.object,
+  opponent: PropTypes.object,
+  findOpponent: PropTypes.func.isRequired,
+  startRound: PropTypes.func.isRequired,
+}
 
 export default MatchMaking;

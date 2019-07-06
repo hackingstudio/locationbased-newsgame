@@ -4,6 +4,7 @@ import { Category } from "../assets/categories";
 import questions, { Question } from "../assets/questions";
 import { fetchValues } from "./datenguide";
 import { GraphQLRequest } from "apollo-link";
+import locations from '../assets/locations.json';
 
 export interface User {
   name: string,
@@ -56,6 +57,10 @@ const nextStepMap = {
 }
 
 const gameReducer = (state: GameState, action: Action) => {
+  if (process.env.NODE_ENV !== 'production') {
+    console.log("prevState:", state);
+    console.log("action:", action);
+  }
   switch (action.type) {
     case "SET_USER":
       if (state.step !== Step.onboarding) {
@@ -172,18 +177,29 @@ export const initialState: GameState = {
   ...initialGameState,
 }
 
-export type GameController = typeof gameController;
+export type GameController = typeof useGameController;
 
-const gameController = () => {
-  const [state, dispatch] = useReducer(gameReducer, initialState);
+const useGameController = (restoreState?: GameState) => {
+  const [state, dispatch] = useReducer(gameReducer, restoreState || initialState);
   const { category, question, user, opponent, answers: { self: userAnswer } } = state;
 
   const {
+    setOpponent,
     setQuestion,
     setResult,
     addPoints,
     ...actions
   } = useMemo(() => createActions(dispatch), [dispatch]);
+
+  const findOpponent = useCallback(() => {
+    if (!user) {
+      return;
+    }
+
+    const locIndex = Math.floor(Math.random() * locations.length - 1);
+    const { id } = locations.filter(loc => loc.id !== user.location)[locIndex];
+    setOpponent("Bot", id);
+  }, [setOpponent, user]);
 
   const findQuestion = useCallback(() => {
     const list = questions[category];
@@ -210,10 +226,11 @@ const gameController = () => {
 
   return {
     ...actions,
+    findOpponent,
     findQuestion,
     calculateResult,
     ...state,
   };
 }
 
-export default gameController;
+export default useGameController;
