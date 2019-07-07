@@ -1,4 +1,3 @@
-import { useMemo } from "react";
 import { createActions } from "../hooks/actions";
 import { action } from "@storybook/addon-actions";
 import { GameState, initialState, GameController } from "../hooks/controller";
@@ -11,7 +10,7 @@ export const mockState = (state: Partial<GameState>): GameState => {
 }
 
 export const mockGameController: GameController = (state: Partial<GameState> = {}) => {
-  const actions = useMemo(() => createActions(action("action")), [])
+  const actions = createActions(action("action"));
 
   return {
     ...actions,
