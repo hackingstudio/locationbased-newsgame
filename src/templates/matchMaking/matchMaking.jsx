@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 import Typography from "@material-ui/core/es/Typography";
 import Grid from "@material-ui/core/es/Grid";
@@ -41,7 +41,7 @@ const MatchMaking = ({ user, opponent, findOpponent, startRound }) => {
             {!opponent ? `Suche Gegner...` : `Gegner gefunden!`}
           </Typography>
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} className={styles.loading}>
           {opponent ? <PlayerCard player={opponent} /> : <CircularProgress />}
         </Grid>
       </Grid>
@@ -54,6 +54,6 @@ MatchMaking.propTypes = {
   opponent: PropTypes.object,
   findOpponent: PropTypes.func.isRequired,
   startRound: PropTypes.func.isRequired,
-}
+};
 
 export default MatchMaking;
