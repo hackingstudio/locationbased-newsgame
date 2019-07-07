@@ -1,3 +1,26 @@
+.winner {
+  margin: 2rem 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+.winner h3 {
+  margin-bottom: 2rem;
+}
+
+svg {
+  height: 4rem !important;
+  width: auto !important;
+  fill: #e90050 !important;
+}
+
 .answers {
   padding: 1rem;
+}
+
+.result h4 {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
 }

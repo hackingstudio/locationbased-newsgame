@@ -10,6 +10,8 @@ import CircularProgress from "@material-ui/core/es/CircularProgress";
 import CountDown from "../../components/countDown";
 import PlayerCard from "../../components/playerCard";
 
+import CakeIcon from "@material-ui/icons/Cake";
+
 import styles from "./results.module.scss";
 
 const Results = ({ user, opponent, history }) => {
@@ -28,12 +30,13 @@ const Results = ({ user, opponent, history }) => {
 
   return (
     <Grid container spacing={3}>
-      <Grid item xs={12}>
+      <Grid item xs={12} className={styles.winner}>
         <Typography variant="h3">
           {winState === "win" && `Du hast gewonnen!`}
           {winState === "lost" && `Du bist Zweite*r!`}
           {winState === "draw" && `Unentschieden!`}
         </Typography>
+        <CakeIcon />
       </Grid>
       <Grid item xs={6}>
         <Button color="primary" variant="contained" fullWidth>
@@ -51,9 +54,9 @@ const Results = ({ user, opponent, history }) => {
             <Typography variant="h5">
               {item.question.content.question}
             </Typography>
-            <Typography variant="h5" textAlign="center">
-              30%
-            </Typography>
+            <div className={styles.result}>
+              <Typography variant="h4">Neuruppin</Typography>
+            </div>
             <Typography variant="body">
               Mehr Infos: <a href={item.link}>{item.link}</a>
             </Typography>
