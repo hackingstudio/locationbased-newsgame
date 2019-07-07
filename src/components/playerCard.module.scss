@@ -1,3 +1,19 @@
+.players {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.player {
+  display: flex;
+  justify-content: center;
+  margin: 0.5rem !important;
+}
+
+.avatar {
+  margin-right: 0.5rem;
+}
+
 .crest {
-    height: 100px;
+  height: 100px;
 }
