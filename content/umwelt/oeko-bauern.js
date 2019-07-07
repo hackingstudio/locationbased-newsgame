@@ -16,5 +16,6 @@ export default {
     question: "Wo gibt es mehr Öko-Bauern?",
     description: "Anteil der ökologisch bewirtschafteten Fläche an der landwirtschaftlich genutzten Fläche insgesamt.",
     unit: "Prozent",
+    map:"//datawrapper.dwcdn.net/rdOQn/3/"
   },
 };
