@@ -1,31 +1,29 @@
-import React, { useState, useEffect } from "react";
+import React, { useMemo } from "react";
 
 import Typography from "@material-ui/core/es/Typography";
 import Button from "@material-ui/core/es/Button";
 import Grid from "@material-ui/core/es/Grid";
 import Paper from "@material-ui/core/es/Paper";
-import Avatar from "@material-ui/core/es/Avatar";
-import CircularProgress from "@material-ui/core/es/CircularProgress";
-
-import CountDown from "../../components/countDown";
-import PlayerCard from "../../components/playerCard";
-
 import CakeIcon from "@material-ui/icons/Cake";
 
+import { locationsMap } from "../../assets/locations";
 import styles from "./results.module.scss";
 
-const Results = ({ user, opponent, history }) => {
-  let winState;
+const Results = ({ user, opponent, history, startGame }) => {
+  const winState = useMemo(() => {
+    const userWon = (user.score || []).filter(x => x).length;
+    const oppWon = (opponent.score || []).filter(x => x).length;
 
-  const userWon = user.score.filter(x => x).length;
-  const oppWon = opponent.score.filter(x => x).length;
+    if (userWon > oppWon) {
+      return "win";
+    } else if (userWon < oppWon) {
+      return "lost";
+    }
+    return "draw";
+  }, [user, opponent])
 
-  if (userWon > oppWon) {
-    winState = "win";
-  } else if (userWon < oppWon) {
-    winState = "lost";
-  } else {
-    winState = "draw";
+  if (!history) {
+    return "Waiting...";
   }
 
   return (
@@ -39,7 +37,7 @@ const Results = ({ user, opponent, history }) => {
         <CakeIcon />
       </Grid>
       <Grid item xs={6}>
-        <Button color="primary" variant="contained" fullWidth>
+        <Button color="primary" variant="contained" fullWidth onClick={startGame}>
           Neues Spiel
         </Button>
       </Grid>
@@ -48,21 +46,27 @@ const Results = ({ user, opponent, history }) => {
           Menü
         </Button>
       </Grid>
-      {history.map(item => (
-        <Grid item xs={12}>
-          <Paper className={styles.answers}>
-            <Typography variant="h5">
-              {item.question.content.question}
-            </Typography>
-            <div className={styles.result}>
-              <Typography variant="h4">Neuruppin</Typography>
-            </div>
-            <Typography variant="body">
-              Mehr Infos: <a href={item.link}>{item.link}</a>
-            </Typography>
-          </Paper>
-        </Grid>
-      ))}
+      {history.map(item => {
+        return (
+          <Grid item xs={12}>
+            <Paper className={styles.answers}>
+              <Typography variant="h5">
+                {item.question.content.question}
+              </Typography>
+              <div className={styles.result}>
+                <Typography variant="h4">{locationsMap[item.result.winner]}</Typography>
+              </div>
+              <Typography variant="body1">
+                <span style={{ textTransform: "uppercase", color: "grey" }}>Beispieltext</span>
+                <p>Die Umwelt schützen ist wichtig – auch den Essenern. 2020 soll in der Innenstadt die erste „Umweltspur“ entstehen – die dann nur von umweltfreundlichen Fahrzeugen benutzt werden darf.</p>
+                <a href="https://www.nrz.de/staedte/essen/essen-soll-im-sommer-2020-eine-erste-umweltspur-bekommen-id217108547.html">
+                  Artikel: Erste Umweltspur in Essen (NRZ)
+                </a>
+              </Typography>
+            </Paper>
+          </Grid>
+        )
+      })}
     </Grid>
   );
 };

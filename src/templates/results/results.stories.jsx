@@ -2,7 +2,10 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 
 import Results from "./results";
-import demoQuestion from "../../../content/gesundheit/babys";
+import qArbeit from "../../../content/arbeit-wirtschaft/beamte";
+import qBildung from "../../../content/bildung/anteil_jugendliche";
+import qGesundheit from "../../../content/gesundheit/babys";
+import qUmwelt from "../../../content/umwelt/kuehe";
 import { mockGameController } from "../../stories/controller";
 
 const ctrl = () =>
@@ -19,36 +22,44 @@ const ctrl = () =>
     },
     history: [
       {
-        category: "gesundheit",
-        question: demoQuestion,
+        category: "arbeit-wirtschaft",
+        question: qArbeit,
         answers: {
           self: "04011",
         },
-        link: "https://www1.wdr.de/index.html",
+        result: {
+          winner: "04011",
+        },
+      },
+      {
+        category: "bildung",
+        question: qBildung,
+        answers: {
+          self: "04011",
+        },
+        result: {
+          winner: "04011",
+        },
       },
       {
         category: "gesundheit",
-        question: demoQuestion,
+        question: qGesundheit,
         answers: {
           self: "04011",
         },
-        link: "https://www1.wdr.de/index.html",
+        result: {
+          winner: "04011",
+        },
       },
       {
-        category: "gesundheit",
-        question: demoQuestion,
+        category: "umwelt",
+        question: qUmwelt,
         answers: {
           self: "04011",
         },
-        link: "https://www1.wdr.de/index.html",
-      },
-      {
-        category: "gesundheit",
-        question: demoQuestion,
-        answers: {
-          self: "04011",
+        result: {
+          winner: "04011",
         },
-        link: "https://www1.wdr.de/index.html",
       },
     ],
   });

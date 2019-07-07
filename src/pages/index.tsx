@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
+import { ThemeProvider } from "@material-ui/styles";
+
 import useGameController, { Step, GameController } from "../hooks/controller";
 import Landing from "../templates/landing/landing";
 import MatchMaking from "../templates/matchMaking/matchMaking";
 import Category from "../templates/categories/categories";
 import Battle from "../templates/battle/battle";
 import Answer from "../templates/answer/answer";
-import { ThemeProvider } from "@material-ui/styles";
+import Result from "../templates/results/results";
 import { theme } from "../components/theme";
 
 interface IndexPageProps {}
@@ -22,6 +24,8 @@ const renderStep = (step: Step): React.FC<ReturnType<GameController>> => {
       return Battle;
     case Step.result:
       return Answer;
+    case Step.endOfGame:
+      return Result;
     default:
       return () => <h1>Not found</h1>;
   }

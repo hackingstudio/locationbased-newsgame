@@ -23,6 +23,16 @@ export interface Result {
   stats: Record<string, number>,
 }
 
+export interface HistoryEntry {
+  category: Category,
+  question: QuestionMeta,
+  answers: {
+    self?: string,
+    opponent?: string,
+  },
+  result: Result,
+}
+
 export interface GameState {
   step: Step,
   user: User | null,
@@ -35,6 +45,7 @@ export interface GameState {
     opponent?: string,
   }
   result: Result | null,
+  history: HistoryEntry[],
 }
 
 export enum Step {
@@ -110,6 +121,12 @@ const gameReducer = (state: GameState, action: Action) => {
       return {
         ...state,
         result: action.payload,
+        history: state.history.concat({
+          category: state.category,
+          answers: state.answers,
+          question: state.question,
+          result: action.payload,
+        } as HistoryEntry),
       }
     case "ADD_POINTS":
       const { user, answers, result } = state;
@@ -174,6 +191,7 @@ export const initialRoundState = {
 export const initialGameState = {
   opponent: null,
   round: -1,
+  history: [],
   ...initialRoundState,
 }
 
