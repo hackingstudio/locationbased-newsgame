@@ -16,5 +16,6 @@ export default {
     question: "Wo gibt es für die Einwohner mehr Fläche zum Erholen?",
     description: "Der Anteil der Erholungsfläche an der Gesamtfläche der Stadt.",
     unit: "Prozent",
+    map:"//datawrapper.dwcdn.net/F37uW/2/"
   },
 };
