@@ -56,7 +56,10 @@ const IndexPage: React.SFC<IndexPageProps> = () => {
 
   const Page = renderStep(step);
   return (
-    <div id="wrapper" style={{ backgroundColor, padding: "3rem" }}>
+    <div
+      id="wrapper"
+      style={{ backgroundColor, padding: "3rem", minHeight: "100vh" }}
+    >
       <ThemeProvider theme={theme}>
         <Container maxWidth="md">
           <Page {...state} />
