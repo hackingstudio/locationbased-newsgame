@@ -60,7 +60,7 @@ const IndexPage: React.SFC<IndexPageProps> = () => {
       id="wrapper"
       style={{
         backgroundColor,
-        padding: "3rem",
+        padding: "1rem .5rem",
         minHeight: "100vh",
         boxSizing: "border-box",
       }}
