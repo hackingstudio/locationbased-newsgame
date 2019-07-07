@@ -1,4 +1,5 @@
 import React, { useMemo } from "react";
+import DWChart from 'react-datawrapper-chart'
 
 import Typography from "@material-ui/core/es/Typography";
 import Button from "@material-ui/core/es/Button";
@@ -47,6 +48,7 @@ const Results = ({ user, opponent, history, startGame }) => {
         </Button>
       </Grid>
       {history.map(item => {
+        const { map } = item.question.content;
         return (
           <Grid item xs={12}>
             <Paper className={styles.answers}>
@@ -56,6 +58,7 @@ const Results = ({ user, opponent, history, startGame }) => {
               <div className={styles.result}>
                 <Typography variant="h4">{locationsMap[item.result.winner]}</Typography>
               </div>
+              {map && <DWChart src={map} />}
               <Typography variant="body1">
                 <span style={{ textTransform: "uppercase", color: "grey" }}>Beispieltext</span>
                 <p>Die Umwelt schützen ist wichtig – auch den Essenern. 2020 soll in der Innenstadt die erste „Umweltspur“ entstehen – die dann nur von umweltfreundlichen Fahrzeugen benutzt werden darf.</p>
