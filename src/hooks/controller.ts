@@ -153,7 +153,7 @@ const gameReducer = (state: GameState, action: Action) => {
         user: {
           ...state.user,
           score: [],
-        },
+        } as User,
         step: Step.opponents,
       }
     case "START_ROUND":
