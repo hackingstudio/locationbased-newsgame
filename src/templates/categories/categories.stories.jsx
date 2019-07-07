@@ -5,8 +5,8 @@ import Categories from "./categories.jsx";
 import { mockGameController } from '../../stories/controller';
 
 const ctrl = (category) => mockGameController({
-  user: { name: "Du", id: "05113" },
-  opponent: { name: "Gegner", id: "04011" },
+  user: { name: "Du", location: "05113" },
+  opponent: { name: "Gegner", location: "04011" },
   category,
 });
 
