@@ -9,12 +9,13 @@ import CountDown from "../../components/countDown";
 import { categoryIcons, categories } from "../../assets/categories";
 import styles from "./categories.module.scss";
 
-const Categories = ({ choosing = true, category, setCategory, randomCategory, nextStep }) => {
+const Categories = ({ choosing = true, category, setCategory, randomCategory, nextStep, findQuestion }) => {
   useEffect(() => {
     if (!category) {
       const timer = setTimeout(() => randomCategory(), 10000);
       return () => clearTimeout(timer);
     } else {
+      findQuestion();
       const timer = setTimeout(() => nextStep(), 3000);
       return () => clearTimeout(timer);
     }
@@ -61,6 +62,7 @@ Categories.propTypes = {
   setCategory: PropTypes.func.isRequired,
   randomCategory: PropTypes.func.isRequired,
   nextStep: PropTypes.func.isRequired,
+  findQuestion: PropTypes.func.isRequired,
 };
 
 export default Categories;

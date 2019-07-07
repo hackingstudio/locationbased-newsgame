@@ -87,7 +87,7 @@ const gameReducer = (state: GameState, action: Action) => {
         category: action.payload,
       };
     case "SET_QUESTION":
-      if (state.step !== Step.question) {
+      if (![Step.category, Step.question].includes(state.step)) {
         return state;
       }
       return {
