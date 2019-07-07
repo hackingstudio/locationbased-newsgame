@@ -25,7 +25,7 @@ const Categories = ({
     } else {
       findQuestion(); // async!
       if (question) {
-        const timer = setTimeout(() => nextStep(), 2000);
+        const timer = setTimeout(() => nextStep(), 3000);
         return () => clearTimeout(timer);
       }
     }

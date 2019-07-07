@@ -15,14 +15,14 @@ const MatchMaking = ({ user, opponent, findOpponent, startRound }) => {
     if (!opponent) {
       const timer = setTimeout(() => {
         findOpponent();
-      }, 3000);
+      }, 10000);
       return () => {
         clearTimeout(timer);
       };
     } else {
       const timer = setTimeout(() => {
         startRound();
-      }, 2000);
+      }, 3000);
       return () => {
         clearTimeout(timer);
       };
