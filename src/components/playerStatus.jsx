@@ -25,11 +25,11 @@ const PlayerStatus = ({ player, reverse = false }) => (
       <Typography variant="h6" component="h3">
         {player.name}
       </Typography>
-      <div className={classNames(reverse ? styles.dotsReverse : "", styles.dots)}>
+      {player.score && <div className={classNames(reverse ? styles.dotsReverse : "", styles.dots)}>
         {player.score.map((won, i) => (
           <div key={i} className={classNames(styles.dot, won ? styles.won : styles.lost)} />
         ))}
-      </div>
+      </div>}
     </Grid>
   </Grid>
 );

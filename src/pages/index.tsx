@@ -3,6 +3,7 @@ import useGameController, { Step, GameController } from "../hooks/controller";
 import Landing from "../templates/landing/landing";
 import MatchMaking from "../templates/matchMaking/matchMaking";
 import Category from "../templates/categories/categories";
+import Battle from "../templates/battle/battle";
 
 interface IndexPageProps {}
 
@@ -14,6 +15,8 @@ const renderStep = (step: Step): React.FC<ReturnType<GameController>> => {
       return MatchMaking;
     case Step.category:
       return Category;
+    case Step.question:
+      return Battle;
     default:
       return () => <h1>Not found</h1>;
   }

@@ -86,6 +86,13 @@ export const createActions = (dispatch: (action: Action) => void) => {
     });
   }
 
+  const setAnswer = (answer: string) => {
+    dispatch({
+      type: "SET_ANSWER",
+      payload: answer,
+    })
+  }
+
   const setResult = (result: Result) => {
     dispatch({
       type: "SET_RESULT",
@@ -113,6 +120,7 @@ export const createActions = (dispatch: (action: Action) => void) => {
     setUser,
     setOpponent,
     setQuestion,
+    setAnswer,
     setResult,
     addPoints,
   }

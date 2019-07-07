@@ -1,4 +1,4 @@
-import React, { } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 
 import Typography from "@material-ui/core/es/Typography";
@@ -9,7 +9,15 @@ import PlayerStatus from "../../components/playerStatus";
 
 import { locationsMap } from "../../assets/locations";
 
-const Battle = ({ question, subQuestion, user, opponent }) => {
+const Battle = ({ question, user, opponent, answers, setAnswer, nextStep }) => {
+  const { content } = question || {};
+  const hasChoosen = !!answers.self;
+
+  useEffect(() => {
+    const timer = setTimeout(() => nextStep(), 10000);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <>
       <CountDown />
@@ -20,28 +28,38 @@ const Battle = ({ question, subQuestion, user, opponent }) => {
         <Grid item xs={6}>
           <PlayerStatus player={opponent} reverse />
         </Grid>
-        <Grid item xs={12}>
-          <Typography variant="h5">{question}</Typography>
-          <Typography variant="body1">{subQuestion}</Typography>
-        </Grid>
-        <Grid item xs={6}>
-          <Button color="primary" variant="contained" fullWidth>
-            {locationsMap[user.location]}
-          </Button>
-        </Grid>
-        <Grid item xs={6}>
-          <Button color="primary" variant="contained" fullWidth>
-            {locationsMap[opponent.location]}
-          </Button>
-        </Grid>
+        {content && <Grid item xs={12}>
+          <Typography variant="h5">{content.question}</Typography>
+          <Typography variant="body1">{content.description}</Typography>
+        </Grid>}
+        {[user, opponent].map(({ location }) => {
+          const selected = answers.self === location;
+          return (
+            <Grid item xs={6}>
+              <Button
+                color={!selected ? "primary" : "secondary"}
+                disabled={hasChoosen && !selected}
+                variant="contained"
+                fullWidth
+                onClick={() => setAnswer(location)}
+              >
+                {locationsMap[location]}
+              </Button>
+            </Grid>
+          )
+        })}
       </Grid>
     </>
   );
 };
 
 Battle.propTypes = {
-  question: PropTypes.string,
-  subQuestion: PropTypes.string
+  question: PropTypes.object,
+  user: PropTypes.object,
+  opponent: PropTypes.object,
+  answers: PropTypes.object,
+  setAnswer: PropTypes.func.isRequired,
+  nextStep: PropTypes.func.isRequired,
 };
 
 export default Battle;

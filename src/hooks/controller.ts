@@ -9,6 +9,7 @@ import locations from '../assets/locations.json';
 export interface User {
   name: string,
   location: string,
+  score?: boolean[],
 }
 
 export interface QuestionMeta {
@@ -33,11 +34,7 @@ export interface GameState {
     self?: string,
     opponent?: string,
   }
-  result: Result | null;
-  points: {
-    self: boolean[];
-    opponent: boolean[];
-  }
+  result: Result | null,
 }
 
 export enum Step {
@@ -113,15 +110,15 @@ const gameReducer = (state: GameState, action: Action) => {
         result: action.payload,
       }
     case "ADD_POINTS":
-      if (state.step !== Step.question) {
+      const { user } = state;
+      if (state.step !== Step.question || !user) {
         return state;
       }
-      const { self, opponent } = state.points;
       return {
         ...state,
-        points: {
-          self: self.concat(action.payload),
-          opponent,
+        user: {
+          ...user,
+          score: (user.score || []).concat(action.payload),
         }
       }
     case "START_GAME":
