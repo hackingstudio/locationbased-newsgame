@@ -17,7 +17,7 @@ const PlayerCard = ({ player }) => (
         {player.name}
       </Typography>
     </Grid>
-    <img className={styles.crest} src={unicoat} />
+    <img className={styles.crest} src={unicoat} alt="" />
     <Typography variant="h5">{locationsMap[player.location]}</Typography>
   </Paper>
 );
