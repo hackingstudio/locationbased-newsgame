@@ -1,6 +1,6 @@
 import { useReducer, useMemo, useCallback } from "react";
 import { Action, createActions } from "./actions";
-import { Category } from "../assets/categories";
+import { Category, categories } from "../assets/categories";
 import questions, { Question } from "../assets/questions";
 import { fetchValues } from "./datenguide";
 import { GraphQLRequest } from "apollo-link";
@@ -191,6 +191,12 @@ const useGameController = (restoreState?: GameState) => {
     ...actions
   } = useMemo(() => createActions(dispatch), [dispatch]);
 
+  const randomCategory = useCallback(() => {
+    const catNum = Math.floor(Math.random() * Object.keys(categories).length);
+    const cat = Object.keys(categories)[catNum] as Category;
+    actions.setCategory(cat);
+  }, [actions.setCategory]);
+
   const findOpponent = useCallback(() => {
     if (!user) {
       return;
@@ -229,6 +235,7 @@ const useGameController = (restoreState?: GameState) => {
     findOpponent,
     findQuestion,
     calculateResult,
+    randomCategory,
     ...state,
   };
 }

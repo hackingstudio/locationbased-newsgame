@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 
 import Typography from "@material-ui/core/es/Typography";
@@ -9,42 +9,40 @@ import CountDown from "../../components/countDown";
 import { categoryIcons, categories } from "../../assets/categories";
 import styles from "./categories.module.scss";
 
-const Categories = ({ choosing = true }) => {
-  const [timeLeft, setTimeLeft] = useState(true);
+const Categories = ({ choosing = true, category, setCategory, randomCategory, nextStep }) => {
   useEffect(() => {
-    const timer = setTimeout(() => setTimeLeft(false), 10000);
-    return () => {
-      clearTimeout(timer);
-    };
-  }, []);
+    if (!category) {
+      const timer = setTimeout(() => randomCategory(), 10000);
+      return () => clearTimeout(timer);
+    } else {
+      const timer = setTimeout(() => nextStep(), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [category]);
+
   const categoryEntries = Object.entries(categories);
+
   return (
     <>
       <CountDown />
       <Grid container spacing={3}>
-        {choosing && (
-          <Grid item xs={12}>
-            <Typography variant="h3" component="h2">
-              Wähle eine Kategorie:
-            </Typography>
-          </Grid>
-        )}
-        {!choosing && (
-          <Grid item xs={12}>
-            <Typography variant="h3" component="h2">
-              Dein Gegner wählt eine Kategorie!
-            </Typography>
-          </Grid>
-        )}
+        <Grid item xs={12}>
+          <Typography variant="h3" component="h2">
+            {choosing ? "Wähle eine Kategorie:" : "Dein Gegner wählt eine Kategorie!"}
+          </Typography>
+        </Grid>
         {categoryEntries.map(([cat, name]) => {
           const Icon = categoryIcons[cat];
+          const selected = cat === category;
+          const hasChoosen = !!category;
           return (
             <Grid item xs={12} key={cat} >
               <Button
-                color={!timeLeft ? "secondary" : "primary"}
+                color={selected ? "secondary" : "primary"}
                 variant="contained"
-                disabled={!choosing && timeLeft}
+                disabled={(!choosing || hasChoosen) && !selected}
                 fullWidth
+                onClick={() => setCategory(cat)}
               >
                 <Icon className={styles.buttonIcon} />
                 {name}
@@ -58,7 +56,11 @@ const Categories = ({ choosing = true }) => {
 };
 
 Categories.propTypes = {
-  choosing: PropTypes.bool
+  choosing: PropTypes.bool,
+  category: PropTypes.string,
+  setCategory: PropTypes.func.isRequired,
+  randomCategory: PropTypes.func.isRequired,
+  nextStep: PropTypes.func.isRequired,
 };
 
 export default Categories;
