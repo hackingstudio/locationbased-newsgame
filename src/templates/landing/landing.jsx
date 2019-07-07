@@ -1,49 +1,306 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
+import { emphasize, makeStyles, useTheme } from '@material-ui/core/styles';
 import Typography from "@material-ui/core/es/Typography";
 import TextField from "@material-ui/core/es/TextField";
-import Select from "@material-ui/core/es/Select";
 import MenuItem from "@material-ui/core/es/MenuItem";
 import Button from "@material-ui/core/es/Button";
 import Grid from "@material-ui/core/es/Grid";
-import PropTypes from 'prop-types';
+import Chip from '@material-ui/core/Chip';
+import CancelIcon from '@material-ui/icons/Cancel';
+import Paper from "@material-ui/core/es/Paper";
+import PropTypes from "prop-types";
+import Select from "react-select";
 
 import { useFormField } from "../../hooks/form";
 import { locationsList } from "../../assets/locations";
 
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1,
+    height: 250,
+  },
+  input: {
+    display: 'flex',
+    padding: 0,
+    height: 'auto',
+  },
+  valueContainer: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    flex: 1,
+    alignItems: 'center',
+    overflow: 'hidden',
+  },
+  chip: {
+    margin: theme.spacing(0.5, 0.25),
+  },
+  chipFocused: {
+    backgroundColor: emphasize(
+      theme.palette.type === 'light' ? theme.palette.grey[300] : theme.palette.grey[700],
+      0.08,
+    ),
+  },
+  noOptionsMessage: {
+    padding: theme.spacing(1, 2),
+  },
+  singleValue: {
+    fontSize: 16,
+  },
+  placeholder: {
+    position: 'absolute',
+    left: 2,
+    bottom: 6,
+    fontSize: 16,
+  },
+  paper: {
+    position: 'absolute',
+    zIndex: 1,
+    marginTop: theme.spacing(1),
+    left: 0,
+    right: 0,
+  },
+  divider: {
+    height: theme.spacing(2),
+  },
+}));
+
+function NoOptionsMessage(props) {
+  return (
+    <Typography
+      color="textSecondary"
+      className={props.selectProps.classes.noOptionsMessage}
+      {...props.innerProps}
+    >
+      {props.children}
+    </Typography>
+  );
+}
+
+NoOptionsMessage.propTypes = {
+  children: PropTypes.node,
+  innerProps: PropTypes.object,
+  selectProps: PropTypes.object.isRequired,
+};
+
+function inputComponent({ inputRef, ...props }) {
+  return <div ref={inputRef} {...props} />;
+}
+
+inputComponent.propTypes = {
+  inputRef: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
+};
+
+function Control(props) {
+  const {
+    children,
+    innerProps,
+    innerRef,
+    selectProps: { classes, TextFieldProps },
+  } = props;
+
+  return (
+    <TextField
+      fullWidth
+      InputProps={{
+        inputComponent,
+        inputProps: {
+          className: classes.input,
+          ref: innerRef,
+          children,
+          ...innerProps,
+        },
+      }}
+      {...TextFieldProps}
+    />
+  );
+}
+
+Control.propTypes = {
+  children: PropTypes.node,
+  innerProps: PropTypes.object,
+  innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
+  selectProps: PropTypes.object.isRequired,
+};
+
+function Option(props) {
+  return (
+    <MenuItem
+      ref={props.innerRef}
+      selected={props.isFocused}
+      component="div"
+      style={{
+        fontWeight: props.isSelected ? 500 : 400,
+      }}
+      {...props.innerProps}
+    >
+      {props.children}
+    </MenuItem>
+  );
+}
+
+Option.propTypes = {
+  children: PropTypes.node,
+  innerProps: PropTypes.object,
+  innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
+  isFocused: PropTypes.bool,
+  isSelected: PropTypes.bool,
+};
+
+function Placeholder(props) {
+  return (
+    <Typography
+      color="textSecondary"
+      className={props.selectProps.classes.placeholder}
+      {...props.innerProps}
+    >
+      {props.children}
+    </Typography>
+  );
+}
+
+Placeholder.propTypes = {
+  children: PropTypes.node,
+  innerProps: PropTypes.object,
+  selectProps: PropTypes.object.isRequired,
+};
+
+function SingleValue(props) {
+  return (
+    <Typography className={props.selectProps.classes.singleValue} {...props.innerProps}>
+      {props.children}
+    </Typography>
+  );
+}
+
+SingleValue.propTypes = {
+  children: PropTypes.node,
+  innerProps: PropTypes.object,
+  selectProps: PropTypes.object.isRequired,
+};
+
+function ValueContainer(props) {
+  return <div className={props.selectProps.classes.valueContainer}>{props.children}</div>;
+}
+
+ValueContainer.propTypes = {
+  children: PropTypes.node,
+  selectProps: PropTypes.object.isRequired,
+};
+
+function MultiValue(props) {
+  return (
+    <Chip
+      tabIndex={-1}
+      label={props.children}
+      className={clsx(props.selectProps.classes.chip, {
+        [props.selectProps.classes.chipFocused]: props.isFocused,
+      })}
+      onDelete={props.removeProps.onClick}
+      deleteIcon={<CancelIcon {...props.removeProps} />}
+    />
+  );
+}
+
+MultiValue.propTypes = {
+  children: PropTypes.node,
+  isFocused: PropTypes.bool,
+  removeProps: PropTypes.object.isRequired,
+  selectProps: PropTypes.object.isRequired,
+};
+
+function Menu(props) {
+  return (
+    <Paper square className={props.selectProps.classes.paper} {...props.innerProps}>
+      {props.children}
+    </Paper>
+  );
+}
+
+Menu.propTypes = {
+  children: PropTypes.node,
+  innerProps: PropTypes.object,
+  selectProps: PropTypes.object,
+};
+
+
+const autocompleteComponents = {
+  Control,
+  Menu,
+  MultiValue,
+  NoOptionsMessage,
+  Option,
+  Placeholder,
+  SingleValue,
+  ValueContainer,
+};
+
 const Landing = ({ setUser, startGame }) => {
-    const [name, handleNameChanged] = useFormField("");
-    const [location, handleLocationChanged] = useFormField("");
-    const handleSubmit = useCallback(() => {
-        setUser(name, location);
-        startGame();
-    }, [name, location, setUser, startGame]);
-    return (
-        <Grid container spacing={3} component="form" onSubmit={handleSubmit}>
-            <Typography variant="h2">Bürgerkrieg</Typography>
-            <Grid item xs={12}>
-                <TextField fullWidth label="Name" value={name} onChange={handleNameChanged} />
-            </Grid>
-            <Grid item xs={12}>
-                <Select fullWidth label="Deine Stadt" value={location} onChange={handleLocationChanged}>
-                    {locationsList.map(location => (
-                        <MenuItem key={location.id} value={location.id}>
-                            {location.name}
-                        </MenuItem>
-                    ))}
-                </Select>
-            </Grid>
-            <Grid item xs={12}>
-                <Button color="primary" variant="contained" type="submit">
-                    Weiter
-                    </Button>
-            </Grid>
-        </Grid>
-    );
+  const classes = useStyles();
+  const theme = useTheme();
+  const [name, handleNameChanged] = useFormField("");
+  const [location, setLocation] = useState("");
+
+  const selectStyles = {
+    input: base => ({
+      ...base,
+      color: theme.palette.text.primary,
+      '& input': {
+        font: 'inherit',
+      },
+    }),
+  };
+
+  const handleSubmit = useCallback(() => {
+    setUser(name, location);
+    startGame();
+  }, [name, location, setUser, startGame]);
+  return (
+    <Grid container spacing={3} component="form" onSubmit={handleSubmit}>
+      <Typography variant="h2">Revier Derby</Typography>
+      <Grid item xs={12}>
+        <TextField
+          fullWidth
+          label="Name"
+          value={name}
+          onChange={handleNameChanged}
+        />
+      </Grid>
+      <Grid item xs={12}>
+        <Select
+          classes={classes}
+          styles={selectStyles}
+          inputId="react-select-single"
+          TextFieldProps={{
+            label: "Deine Stadt",
+            InputLabelProps: {
+              htmlFor: "react-select-single",
+              shrink: true,
+            },
+            placeholder: "Search a country (start with a)",
+          }}
+          options={locationsList.map(loc => ({
+            value: loc.id,
+            label: loc.name,
+          }))}
+          components={autocompleteComponents}
+          value={location}
+          onChange={setLocation}
+          fullWidth
+        />
+      </Grid>
+      <Grid item xs={12}>
+        <Button color="primary" variant="contained" type="submit">
+          Weiter
+        </Button>
+      </Grid>
+    </Grid>
+  );
 };
 
 Landing.propTypes = {
-    setUser: PropTypes.func.isRequired,
-    startGame: PropTypes.func.isRequired,
-}
+  setUser: PropTypes.func.isRequired,
+  startGame: PropTypes.func.isRequired,
+};
 
 export default Landing;
