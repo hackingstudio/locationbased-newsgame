@@ -5,6 +5,8 @@ import MatchMaking from "../templates/matchMaking/matchMaking";
 import Category from "../templates/categories/categories";
 import Battle from "../templates/battle/battle";
 import Answer from "../templates/answer/answer";
+import { ThemeProvider } from "@material-ui/styles";
+import { theme } from "../components/theme";
 
 interface IndexPageProps {}
 
@@ -46,7 +48,11 @@ const IndexPage: React.SFC<IndexPageProps> = () => {
   }, [step]);
 
   const Page = renderStep(step);
-  return <Page {...state} />;
+  return (
+    <ThemeProvider theme={theme}>
+      <Page {...state} />
+    </ThemeProvider>
+  );
 };
 
 export default IndexPage;
