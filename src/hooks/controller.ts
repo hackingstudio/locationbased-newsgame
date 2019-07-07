@@ -207,7 +207,7 @@ const useGameController = (restoreState?: GameState) => {
   const findQuestion = useCallback(() => {
     const list = questions[category];
     const index = Math.floor(Math.random() * list.length);
-    setQuestion(list[index].content);
+    setQuestion(list[index]);
   }, [category, setQuestion]);
 
   const calculateResult = useCallback(async () => {

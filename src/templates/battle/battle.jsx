@@ -9,7 +9,7 @@ import PlayerStatus from "../../components/playerStatus";
 
 import { locationsMap } from "../../assets/locations";
 
-const Battle = ({ question, user, opponent, answers, setAnswer, nextStep }) => {
+const Battle = ({ question, user, opponent, answers, setAnswer, nextStep, calculateResult }) => {
   const { content } = question || {};
   const hasChoosen = !!answers.self;
 
@@ -17,6 +17,12 @@ const Battle = ({ question, user, opponent, answers, setAnswer, nextStep }) => {
     const timer = setTimeout(() => nextStep(), 10000);
     return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    if (hasChoosen) {
+      calculateResult();
+    }
+  }, [hasChoosen]);
 
   return (
     <>

@@ -1,9 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { useEffect } from "react";
 
 import Typography from "@material-ui/core/es/Typography";
 import Grid from "@material-ui/core/es/Grid";
 import Paper from "@material-ui/core/es/Paper";
+import DoneIcon from "@material-ui/icons/Done";
 import CountDown from "../../components/countDown";
 import PlayerStatus from "../../components/playerStatus";
 import unicoat from "../../assets/unicoat.png";
@@ -11,7 +11,14 @@ import unicoat from "../../assets/unicoat.png";
 import { locationsMap } from "../../assets/locations";
 import styles from "./answer.module.scss";
 
-const Answer = ({ answer, subAnswer, user, opponent }) => {
+const Answer = ({ question, user, opponent, answers, result = {}, startRound }) => {
+  const { content } = question || {};
+
+  useEffect(() => {
+    const timer = setTimeout(() => startRound(), 10000);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <>
       <CountDown />
@@ -23,35 +30,26 @@ const Answer = ({ answer, subAnswer, user, opponent }) => {
           <PlayerStatus player={opponent} reverse />
         </Grid>
         <Grid item xs={12}>
-          <Typography variant="h5">{answer}</Typography>
-          <Typography variant="body1">{subAnswer}</Typography>
+          <Typography variant="h5">{content.question}</Typography>
+          <Typography variant="body1">{content.description}</Typography>
         </Grid>
-        <Grid item xs={6}>
-          <Paper className={styles.answer}>
-            {locationsMap[user.location]}
-            <div className={styles.crest}>
-              <img src={unicoat} />
-              <img src={unicoat} />
-            </div>
-          </Paper>
-        </Grid>
-        <Grid item xs={6}>
-          <Paper className={styles.answer}>
-            {locationsMap[opponent.location]}
-            <div className={styles.crest}>
-              <img src={unicoat} />
-              <img src={unicoat} />
-            </div>
-          </Paper>
-        </Grid>
+        {result && [user, opponent].map(({ location }) => (
+          <Grid item xs={6}>
+            <Paper className={styles.answer}>
+              {locationsMap[location]}
+              <div className={styles.crest}>
+                {["self", "opponent"].map((playerType) => (
+                  answers[playerType] === location && <img src={unicoat} />
+                ))}
+              </div>
+              {result.stats && <span>{result.stats[location]}</span>}
+              {result.winner === location && <DoneIcon />}
+            </Paper>
+          </Grid>
+        ))}
       </Grid>
     </>
   );
-};
-
-Answer.propTypes = {
-  answer: PropTypes.string,
-  subAnswer: PropTypes.string
 };
 
 export default Answer;

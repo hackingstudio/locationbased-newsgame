@@ -2,27 +2,34 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 
 import Answer from "./answer.jsx";
+import demoQuestion from '../../../content/gesundheit/babys';
+import { mockGameController } from '../../stories/controller';
 
-const answer =
-    "Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion daikon amaranth tatsoi tomatillo melon azuki bean garlic.";
-
-const subAnswer =
-    "Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion daikon amaranth tatsoi tomatillo melon azuki bean garlic.";
+const ctrl = () => mockGameController({
+  user: {
+    name: "Du",
+    location: "05113",
+    score: [true, false, false, true],
+  },
+  opponent: {
+    name: "Gegner",
+    location: "04011",
+    score: [true, true, true, false],
+  },
+  category: "gesundheit",
+  question: demoQuestion,
+  answers: {
+    self: "04011",
+  },
+  result: {
+    lowYear: 2016,
+    winner: "04011",
+    stats: {
+      "05113": 33,
+      "04011": 56,
+    },
+  }
+});
 
 storiesOf("Templates / Answer", module)
-    .add("PlayerOne", () => (
-        <Answer
-            user={{ name: "Christine", location: "05113", score: [true, true, false] }}
-            opponent={{ name: "Jannes", location: "04011", score: [false, true, false] }}
-            answer={answer}
-            subAnswer={subAnswer}
-        />
-    ))
-    .add("PlayerTwo", () => (
-        <Answer
-            user={{ name: "Jannes", location: "04011", score: [true, true, false] }}
-            opponent={{ name: "Christine", location: "05113", score: [false, true, false] }}
-            answer={answer}
-            subAnswer={subAnswer}
-        />
-    ));
+  .add("default", () => <Answer {...ctrl()} />);
