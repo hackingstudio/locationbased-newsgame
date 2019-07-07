@@ -270,6 +270,7 @@ const Landing = ({ setUser, startGame }) => {
         <Select
           classes={classes}
           styles={selectStyles}
+          openMenuOnClick={false}
           inputId="react-select-single"
           TextFieldProps={{
             label: "Deine Stadt",
