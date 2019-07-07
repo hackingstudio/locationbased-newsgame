@@ -2,22 +2,57 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 
 import Results from "./results";
+import demoQuestion from "../../../content/gesundheit/babys";
+import { mockGameController } from "../../stories/controller";
 
-const question =
-  "Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion daikon amaranth tatsoi tomatillo melon azuki bean garlic.";
-
-const subQuestion =
-  "Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion daikon amaranth tatsoi tomatillo melon azuki bean garlic.";
+const ctrl = () =>
+  mockGameController({
+    user: {
+      name: "Du",
+      location: "05113",
+      score: [true, false, false, true],
+    },
+    opponent: {
+      name: "Gegner",
+      location: "04011",
+      score: [true, true, true, false],
+    },
+    history: [
+      {
+        category: "gesundheit",
+        question: demoQuestion,
+        answers: {
+          self: "04011",
+        },
+        link: "https://www1.wdr.de/index.html",
+      },
+      {
+        category: "gesundheit",
+        question: demoQuestion,
+        answers: {
+          self: "04011",
+        },
+        link: "https://www1.wdr.de/index.html",
+      },
+      {
+        category: "gesundheit",
+        question: demoQuestion,
+        answers: {
+          self: "04011",
+        },
+        link: "https://www1.wdr.de/index.html",
+      },
+      {
+        category: "gesundheit",
+        question: demoQuestion,
+        answers: {
+          self: "04011",
+        },
+        link: "https://www1.wdr.de/index.html",
+      },
+    ],
+  });
 
 storiesOf("Templates / Results", module).add("default", () => (
-  <Results
-    user={{ name: "Du", location: "04011", score: [true, true, true] }}
-    opponent={{
-      name: "Opponent",
-      location: "04012",
-      score: [true, true, false],
-    }}
-    question={question}
-    subQuestion={subQuestion}
-  />
+  <Results {...ctrl()} />
 ));

@@ -10,7 +10,9 @@ import CircularProgress from "@material-ui/core/es/CircularProgress";
 import CountDown from "../../components/countDown";
 import PlayerCard from "../../components/playerCard";
 
-const Results = ({ user, opponent, questions }) => {
+import styles from "./results.module.scss";
+
+const Results = ({ user, opponent, history }) => {
   let winState;
 
   const userWon = user.score.filter(x => x).length;
@@ -43,13 +45,17 @@ const Results = ({ user, opponent, questions }) => {
           Menü
         </Button>
       </Grid>
-      {questions.map(question => (
+      {history.map(item => (
         <Grid item xs={12}>
-          <Paper>
-            <Typography variant="h4">{question.question}</Typography>
-            <Typography variant="body">{question.subquestion}</Typography>
+          <Paper className={styles.answers}>
+            <Typography variant="h5">
+              {item.question.content.question}
+            </Typography>
+            <Typography variant="h5" textAlign="center">
+              30%
+            </Typography>
             <Typography variant="body">
-              Mehr Infos: <a href={question.link} />
+              Mehr Infos: <a href={item.link}>{item.link}</a>
             </Typography>
           </Paper>
         </Grid>
