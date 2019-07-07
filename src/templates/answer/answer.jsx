@@ -11,7 +11,15 @@ import unicoat from "../../assets/unicoat.png";
 import { locationsMap } from "../../assets/locations";
 import styles from "./answer.module.scss";
 
-const Answer = ({ question, user, opponent, answers, result, startRound, addPoints }) => {
+const Answer = ({
+  question,
+  user,
+  opponent,
+  answers,
+  result,
+  startRound,
+  addPoints,
+}) => {
   const { content } = question || {};
   const defResult = result || {};
 
@@ -41,20 +49,41 @@ const Answer = ({ question, user, opponent, answers, result, startRound, addPoin
           <Typography variant="h5">{content.question}</Typography>
           <Typography variant="body1">{content.description}</Typography>
         </Grid>
-        {result && [user, opponent].map(({ location }) => (
-          <Grid item xs={6}>
-            <Paper className={styles.answer}>
-              {locationsMap[location]}
-              <div className={styles.crest}>
-                {["self", "opponent"].map((playerType) => (
-                  answers[playerType] === location && <img src={unicoat} />
-                ))}
-              </div>
-              {result.stats && <span>{result.stats[location]}</span>}
-              {result.winner === location && <DoneIcon />}
-            </Paper>
-          </Grid>
-        ))}
+        {result &&
+          [user, opponent].map(({ location }) => (
+            <Grid item xs={6}>
+              <Paper className={styles.answer}>
+                <div>
+                  <div className={styles.verticalCenter}>
+                    <Typography variant="h5" component="h6">
+                      {locationsMap[location]}
+                    </Typography>
+                    {result.winner === location && (
+                      <DoneIcon fontSize="large" className={styles.checkMark} />
+                    )}
+                  </div>
+                  <div className={styles.crest}>
+                    {["self", "opponent"].map(
+                      playerType =>
+                        answers[playerType] === location && (
+                          <img src={unicoat} />
+                        ),
+                    )}
+                  </div>
+                </div>
+                {result.stats && (
+                  <>
+                    <Typography variant="h6" component="span">
+                      {result.stats[location]}&nbsp;
+                    </Typography>
+                    <Typography variant="body2" component="span">
+                      {question.content.unit}
+                    </Typography>
+                  </>
+                )}
+              </Paper>
+            </Grid>
+          ))}
       </Grid>
     </>
   );
