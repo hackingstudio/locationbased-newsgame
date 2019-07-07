@@ -16,5 +16,6 @@ export default {
     question: "Welche Einwohner besitzen mehr Autos?",
     description: "Die Anzahl der PKW je 1.000 Einwohner.",
     unit: "Anzahl je 1.000 Einwohner",
+    map: "//datawrapper.dwcdn.net/3pjZy/1/"
   },
 };
