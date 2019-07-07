@@ -10,6 +10,7 @@ import CancelIcon from '@material-ui/icons/Cancel';
 import Paper from "@material-ui/core/es/Paper";
 import PropTypes from "prop-types";
 import Select from "react-select";
+import clsx from 'clsx';
 
 import { useFormField } from "../../hooks/form";
 import { locationsList } from "../../assets/locations";
