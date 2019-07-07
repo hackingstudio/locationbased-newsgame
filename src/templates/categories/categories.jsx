@@ -9,7 +9,15 @@ import CountDown from "../../components/countDown";
 import { categoryIcons, categories } from "../../assets/categories";
 import styles from "./categories.module.scss";
 
-const Categories = ({ choosing = true, category, question, setCategory, randomCategory, nextStep, findQuestion }) => {
+const Categories = ({
+  choosing = true,
+  category,
+  question,
+  setCategory,
+  randomCategory,
+  nextStep,
+  findQuestion,
+}) => {
   useEffect(() => {
     if (!category) {
       const timer = setTimeout(() => randomCategory(), 10000);
@@ -29,9 +37,11 @@ const Categories = ({ choosing = true, category, question, setCategory, randomCa
     <>
       <CountDown />
       <Grid container spacing={3}>
-        <Grid item xs={12}>
+        <Grid item xs={12} className={styles.header}>
           <Typography variant="h3" component="h2">
-            {choosing ? "Wähle eine Kategorie:" : "Dein Gegner wählt eine Kategorie!"}
+            {choosing
+              ? "Wähle eine Kategorie:"
+              : "Dein Gegner wählt eine Kategorie!"}
           </Typography>
         </Grid>
         {categoryEntries.map(([cat, name]) => {
@@ -39,7 +49,7 @@ const Categories = ({ choosing = true, category, question, setCategory, randomCa
           const selected = cat === category;
           const hasChoosen = !!category;
           return (
-            <Grid item xs={12} key={cat} >
+            <Grid item xs={12} key={cat}>
               <Button
                 color={selected ? "secondary" : "primary"}
                 variant="contained"
