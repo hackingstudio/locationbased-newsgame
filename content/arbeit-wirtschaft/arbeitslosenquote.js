@@ -16,5 +16,6 @@ export default {
     question: "Wo ist die Arbeitslosenquote höher?",
     description: "Anteil der Arbeitslosen an den zivilen Erwerbspersonen im Jahresdurchschnitt",
     unit: "Prozent",
+    map: "//datawrapper.dwcdn.net/Wg5O3/1/"
   }
 }
