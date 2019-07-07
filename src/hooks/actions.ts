@@ -39,7 +39,6 @@ interface SetResultAction {
 }
 interface AddPointsAction {
   type: "ADD_POINTS",
-  payload: boolean,
 }
 
 export type Action =
@@ -103,7 +102,6 @@ export const createActions = (dispatch: (action: Action) => void) => {
   const addPoints = (won: boolean) => {
     dispatch({
       type: "ADD_POINTS",
-      payload: won,
     });
   }
 

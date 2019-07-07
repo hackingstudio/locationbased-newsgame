@@ -2,7 +2,7 @@ import { useReducer, useMemo, useCallback } from "react";
 import { Action, createActions } from "./actions";
 import { Category, categories } from "../assets/categories";
 import questions, { Question } from "../assets/questions";
-import { fetchValues } from "./datenguide";
+import { fetchValues, DataMissingError } from "./datenguide";
 import { GraphQLRequest } from "apollo-link";
 import locations from '../assets/locations.json';
 
@@ -52,6 +52,8 @@ const nextStepMap = {
   [Step.category]: Step.question as Step.question,
   [Step.question]: Step.result as Step.result,
 }
+
+const MAX_ROUND = 4;
 
 const gameReducer = (state: GameState, action: Action) => {
   if (process.env.NODE_ENV !== 'production') {
@@ -110,15 +112,20 @@ const gameReducer = (state: GameState, action: Action) => {
         result: action.payload,
       }
     case "ADD_POINTS":
-      const { user } = state;
-      if (state.step !== Step.question || !user) {
+      const { user, answers, result } = state;
+      if (state.step !== Step.result || !user || !answers || !result) {
         return state;
       }
+      const { score = [] } = user;
+      if (score.length > state.round) {
+        return state;
+      }
+      const gotPoint = answers.self === result.winner;
       return {
         ...state,
         user: {
           ...user,
-          score: (user.score || []).concat(action.payload),
+          score: score.concat(gotPoint),
         }
       }
     case "START_GAME":
@@ -128,6 +135,12 @@ const gameReducer = (state: GameState, action: Action) => {
         step: Step.opponents,
       }
     case "START_ROUND":
+      if (state.round >= MAX_ROUND - 1) {
+        return {
+          ...state,
+          step: Step.endOfGame,
+        }
+      }
       return {
         ...state,
         ...initialRoundState,
@@ -161,10 +174,6 @@ export const initialRoundState = {
 export const initialGameState = {
   opponent: null,
   round: -1,
-  points: {
-    self: [],
-    opponent: [],
-  },
   ...initialRoundState,
 }
 
@@ -184,7 +193,6 @@ const useGameController = (restoreState?: GameState) => {
     setOpponent,
     setQuestion,
     setResult,
-    addPoints,
     ...actions
   } = useMemo(() => createActions(dispatch), [dispatch]);
 
@@ -204,10 +212,30 @@ const useGameController = (restoreState?: GameState) => {
     setOpponent("Bot", id);
   }, [setOpponent, user]);
 
-  const findQuestion = useCallback(() => {
+  const findQuestion = useCallback(async () => {
+    if (!user || !opponent) {
+      return;
+    }
     const list = questions[category];
-    const index = Math.floor(Math.random() * list.length);
-    setQuestion(list[index]);
+    let i = 0;
+    while (true) {
+      if (i > 5) {
+        throw new Error("Unable to find question!");
+      }
+      try {
+        const index = Math.floor(Math.random() * list.length);
+        const question = list[index];
+        await fetchValues(question.query, [user.location, opponent.location]);
+        setQuestion(question);
+        return;
+      } catch (e) {
+        console.error(e);
+        if (!(e instanceof DataMissingError)) {
+          throw e;
+        }
+      }
+      i++;
+    }
   }, [category, setQuestion]);
 
   const calculateResult = useCallback(async () => {
@@ -218,13 +246,12 @@ const useGameController = (restoreState?: GameState) => {
     if (stats.length < 2) {
       throw new Error(`Not enough data!`);
     }
-    const winner = stats.sort((a, b) => a.value - b.value)[0].id;
+    const winner = stats.sort((a, b) => b.value - a.value)[0].id;
     setResult({
       lowYear,
       winner,
       stats: stats.reduce((agg, { id, value }) => (agg[id] = value, agg), {}),
     });
-    addPoints(winner === userAnswer);
   }, [question, user, opponent, userAnswer]);
 
   return {

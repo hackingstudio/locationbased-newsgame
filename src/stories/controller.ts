@@ -15,7 +15,7 @@ export const mockGameController: GameController = (state: Partial<GameState> = {
   return {
     ...actions,
     findOpponent: action("findOpponent"),
-    findQuestion: action("findQuestion"),
+    findQuestion: (...args) => Promise.resolve(action("findQuestion")(...args)),
     calculateResult: (...args) => Promise.resolve(action("calculateResult")(...args)),
     randomCategory: action("randomCategory"),
     ...mockState(state),

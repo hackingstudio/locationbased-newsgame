@@ -9,17 +9,19 @@ import CountDown from "../../components/countDown";
 import { categoryIcons, categories } from "../../assets/categories";
 import styles from "./categories.module.scss";
 
-const Categories = ({ choosing = true, category, setCategory, randomCategory, nextStep, findQuestion }) => {
+const Categories = ({ choosing = true, category, question, setCategory, randomCategory, nextStep, findQuestion }) => {
   useEffect(() => {
     if (!category) {
       const timer = setTimeout(() => randomCategory(), 10000);
       return () => clearTimeout(timer);
     } else {
-      findQuestion();
-      const timer = setTimeout(() => nextStep(), 3000);
-      return () => clearTimeout(timer);
+      findQuestion(); // async!
+      if (question) {
+        const timer = setTimeout(() => nextStep(), 3000);
+        return () => clearTimeout(timer);
+      }
     }
-  }, [category]);
+  }, [category, question]);
 
   const categoryEntries = Object.entries(categories);
 

@@ -11,8 +11,16 @@ import unicoat from "../../assets/unicoat.png";
 import { locationsMap } from "../../assets/locations";
 import styles from "./answer.module.scss";
 
-const Answer = ({ question, user, opponent, answers, result = {}, startRound }) => {
+const Answer = ({ question, user, opponent, answers, result, startRound, addPoints }) => {
   const { content } = question || {};
+  const defResult = result || {};
+
+  useEffect(() => {
+    if (!defResult.winner || !answers.self) {
+      return;
+    }
+    addPoints(defResult.winner === answers.self);
+  }, [defResult.winner, answers.self]);
 
   useEffect(() => {
     const timer = setTimeout(() => startRound(), 10000);
