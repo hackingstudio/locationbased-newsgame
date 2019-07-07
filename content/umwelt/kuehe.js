@@ -16,5 +16,6 @@ export default {
     question: "Welche Stadt hat mehr Kühe?",
     description: "Wie hoch ist die Anzahl der Rinder auf je 100 Hektar landwirtschaftlich genutzter Fläche?",
     unit: "Pro 100 Hektar",
+    map:"https://datawrapper.dwcdn.net/tH9jL/1/"
   },
 };
