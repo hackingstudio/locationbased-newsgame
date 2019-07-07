@@ -10,49 +10,51 @@ import CircularProgress from "@material-ui/core/es/CircularProgress";
 import CountDown from "../../components/countDown";
 import PlayerCard from "../../components/playerCard";
 
+import styles from "./matchMaking.module.scss";
+
 const MatchMaking = ({ player }) => {
-    const [opponent, setOpponent] = useState(null);
+  const [opponent, setOpponent] = useState(null);
 
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            if (!opponent) {
-                setOpponent({ name: "Robo-Jannes", location: "Bremen" });
-            }
-        }, 10000);
-        return () => {
-            clearTimeout(timer);
-        };
-    }, []);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (!opponent) {
+        setOpponent({ name: "Robo-Jannes", location: "Bremen" });
+      }
+    }, 10000);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
 
-    useEffect(() => {
-        if (opponent) {
-            const timer = setTimeout(() => {
-                alert(`Starting game`);
-            }, 3000);
-            return () => {
-                clearTimeout(timer);
-            };
-        }
-    }, [opponent]);
+  useEffect(() => {
+    if (opponent) {
+      const timer = setTimeout(() => {
+        alert(`Starting game`);
+      }, 3000);
+      return () => {
+        clearTimeout(timer);
+      };
+    }
+  }, [opponent]);
 
-    return (
-        <>
-            {opponent && <CountDown time={3} />}
-            <Grid container spacing={3}>
-                <Grid item xs={12}>
-                    <PlayerCard player={player} />
-                </Grid>
-                <Grid item xs={12}>
-                    <Typography variant="h3" component="h2">
-                        {!opponent ? `Suche Gegner...` : `Gegner gefunden!`}
-                    </Typography>
-                </Grid>
-                <Grid item xs={12}>
-                    {opponent ? <PlayerCard player={opponent} /> : <CircularProgress />}
-                </Grid>
-            </Grid>
-        </>
-    );
+  return (
+    <>
+      {opponent && <CountDown time={3} />}
+      <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <PlayerCard player={player} />
+        </Grid>
+        <Grid item xs={12} className={styles.text}>
+          <Typography variant="h3" component="h2">
+            {!opponent ? `Suche Gegner...` : `Gegner gefunden!`}
+          </Typography>
+        </Grid>
+        <Grid item xs={12}>
+          {opponent ? <PlayerCard player={opponent} /> : <CircularProgress />}
+        </Grid>
+      </Grid>
+    </>
+  );
 };
 
 export default MatchMaking;
