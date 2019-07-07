@@ -252,8 +252,12 @@ const Landing = ({ setUser, startGame }) => {
     }),
   };
 
-  const handleSubmit = useCallback(() => {
-    setUser(name, location);
+  const handleSubmit = useCallback((e) => {
+    e.preventDefault();
+    if (!name || !location) {
+      return;
+    }
+    setUser(name, location.value);
     startGame();
   }, [name, location, setUser, startGame]);
   return (
