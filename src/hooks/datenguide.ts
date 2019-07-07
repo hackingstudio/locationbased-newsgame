@@ -43,7 +43,6 @@ export const fetchValues = async (query: GraphQLRequest, locations: string[]) =>
     })
   );
 
-  console.log("results:", results);
   const lowYear = results.reduce((year, { data, id }) => {
     const { stat } = data.region;
     const validStats = stat.filter(s => s.value !== 0);
@@ -56,7 +55,6 @@ export const fetchValues = async (query: GraphQLRequest, locations: string[]) =>
     }
     return year;
   }, new Date().getFullYear());
-  console.log("lowYear:", lowYear);
 
   const stats: StatResult[] = results.map(({ id, data }) => {
     const { value = "" } = data.region.stat.find(({ year }) => year === lowYear) || {};

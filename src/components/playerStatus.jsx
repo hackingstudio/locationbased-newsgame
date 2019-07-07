@@ -4,8 +4,7 @@ import Grid from "@material-ui/core/es/Grid";
 import Typography from "@material-ui/core/es/Typography";
 import * as classNames from "classnames";
 
-import { locationsMap } from "../assets/locations";
-import unicoat from "../assets/unicoat.png";
+import { locationsMap, crestMap } from "../assets/locations";
 import styles from "./playerStatus.module.scss";
 
 const PlayerStatus = ({ player, reverse = false }) => (
@@ -13,7 +12,7 @@ const PlayerStatus = ({ player, reverse = false }) => (
     <Grid item>
       <div className={styles.crest}>
         <div>
-          <img src={unicoat} alt="" />
+          <img src={crestMap[player.location]} alt="" />
         </div>
         <Typography variant="subtitle1" component="h4">
           {locationsMap[player.location]}

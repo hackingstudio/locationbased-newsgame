@@ -6,9 +6,8 @@ import Paper from "@material-ui/core/es/Paper";
 import DoneIcon from "@material-ui/icons/Done";
 import CountDown from "../../components/countDown";
 import PlayerStatus from "../../components/playerStatus";
-import unicoat from "../../assets/unicoat.png";
 
-import { locationsMap } from "../../assets/locations";
+import { locationsMap, crestMap } from "../../assets/locations";
 import styles from "./answer.module.scss";
 
 const Answer = ({
@@ -66,7 +65,7 @@ const Answer = ({
                     {["self", "opponent"].map(
                       playerType =>
                         answers[playerType] === location && (
-                          <img src={unicoat} />
+                          <img src={crestMap[playerType === "self" ? user.location : opponent.location]} />
                         ),
                     )}
                   </div>

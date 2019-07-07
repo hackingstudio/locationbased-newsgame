@@ -1,0 +1,640 @@
+[
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q14859",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Wappen%20von%20Ansbach.svg",
+        "German_district_key": "09561"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q14889",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/DEU%20Schwabach%20COA.svg",
+        "German_district_key": "09565"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q14891",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Wappen%20Suhl.svg",
+        "German_district_key": "16054"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q16017",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Wappen%20Zweibr%C3%BCcken.svg",
+        "German_district_key": "07320"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q24879",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Bremen%20Wappen%28Mittel%29.svg",
+        "German_district_key": "04011",
+        "official_name": "Bremen"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q487971",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Bad%20Reichenhall%20-%20Wappen.svg"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q896427",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Halle-Neustadt%20Wappen.svg"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q990505",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Wappen%20R%C3%BCstringen.svg"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q1313398",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/DEU%20Eiserfeld%20COA.svg"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q1652632",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/DEU%20Huettental%20COA.svg"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q1982226",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/DEU%20Neviges%20COA.svg"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q14825",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Wappen%20Memmingen.svg",
+        "German_district_key": "09764",
+        "official_name": "Memmingen"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q14849",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Wappen%20Pirmasens.svg",
+        "German_district_key": "07317"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q365",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/DEU%20Koeln%20COA.svg",
+        "German_district_key": "05315",
+        "official_name": "Köln"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q586",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/DEU%20Bonn%20COA.svg",
+        "German_district_key": "05314",
+        "official_name": "Bonn"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q715",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Wappen%20Heilbronn.svg",
+        "German_district_key": "08121",
+        "official_name": "Heilbronn"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q1017",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Stadtwappen%20der%20kreisfreien%20Stadt%20Aachen.svg",
+        "official_name": "Aachen"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q1040",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Coat%20of%20arms%20de-bw%20Karlsruhe.svg",
+        "German_district_key": "08212",
+        "official_name": "Karlsruhe"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q1295",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Coat%20of%20arms%20of%20Dortmund.svg",
+        "German_district_key": "05913",
+        "official_name": "Dortmund"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q1707",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Wappen%20Kiel%20%28Alternativ%29.svg",
+        "German_district_key": "01002",
+        "official_name": "Kiel"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q1709",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/DEU%20Schwerin%20COA.svg",
+        "German_district_key": "13004",
+        "official_name": "Schwerin"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q1711",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/DEU%20Potsdam%20COA.svg",
+        "German_district_key": "12054",
+        "official_name": "Potsdam"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q1715",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Coat%20of%20arms%20of%20Hannover.svg",
+        "official_name": "Hannover"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q1718",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Wappen%20der%20Landeshauptstadt%20Duesseldorf.svg",
+        "German_district_key": "05111",
+        "official_name": "Düsseldorf"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q1720",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Coat%20of%20arms%20of%20Mainz-2008%20new.svg",
+        "German_district_key": "07315",
+        "official_name": "Mainz"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q1721",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Wappen%20Wiesbaden.svg",
+        "German_district_key": "06414",
+        "official_name": "Wiesbaden"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q1726",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Muenchen%20Kleines%20Stadtwappen.svg",
+        "German_district_key": "09162",
+        "official_name": "München"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q1729",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/DEU%20Erfurt%20COA.svg",
+        "German_district_key": "16051",
+        "official_name": "Erfurt"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q1731",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Dresden%20Stadtwappen.svg",
+        "German_district_key": "14612",
+        "official_name": "Dresden"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q1733",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Wappen%20Magdeburg.svg",
+        "German_district_key": "15003",
+        "official_name": "Magdeburg"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q1794",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Wappen%20Frankfurt%20am%20Main.svg",
+        "German_district_key": "06412",
+        "official_name": "Frankfurt am Main"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q2066",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/DEU%20Essen%20COA.svg",
+        "German_district_key": "05113",
+        "official_name": "Essen"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q2079",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Coat%20of%20arms%20of%20Leipzig.svg",
+        "German_district_key": "14713",
+        "official_name": "Leipzig"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q2090",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Wappen%20von%20N%C3%BCrnberg.svg",
+        "German_district_key": "09564",
+        "official_name": "Nürnberg"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q2100",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Stadtwappen%20der%20Stadt%20Duisburg.svg",
+        "German_district_key": "05112",
+        "official_name": "Duisburg"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q2103",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Stadtwappen%20der%20kreisfreien%20Stadt%20Bochum.svg",
+        "German_district_key": "05911",
+        "official_name": "Bochum"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q2107",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/DEU%20Wuppertal%20COA.svg",
+        "German_district_key": "05124",
+        "official_name": "Wuppertal"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q2112",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/DEU%20Bielefeld%20COA.svg",
+        "German_district_key": "05711",
+        "official_name": "Bielefeld"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q2119",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Wappen%20Mannheim.svg",
+        "German_district_key": "08222",
+        "official_name": "Mannheim"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q2706",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Wappen%20Bremerhaven.svg",
+        "German_district_key": "04012",
+        "official_name": "Bremerhaven"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q2742",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/DEU%20Muenster%20COA.svg",
+        "German_district_key": "05515",
+        "official_name": "Münster"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q2749",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Augsburg%20wappen.svg",
+        "German_district_key": "09761",
+        "official_name": "Augsburg"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q2758",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/DEU%20Moenchengladbach%20COA.svg",
+        "German_district_key": "05116",
+        "official_name": "Mönchengladbach"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q2765",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/DEU%20Gelsenkirchen%20COA.svg",
+        "German_district_key": "05513",
+        "official_name": "Gelsenkirchen"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q2773",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Wappen%20Braunschweig.svg",
+        "German_district_key": "03101",
+        "official_name": "Braunschweig"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q2795",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Coat%20of%20arms%20of%20Chemnitz.svg",
+        "German_district_key": "14511",
+        "official_name": "Chemnitz"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q2805",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/DEU%20Krefeld%20COA.svg",
+        "German_district_key": "05114",
+        "official_name": "Krefeld"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q2814",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Coat%20of%20arms%20of%20Halle%20%28Saale%29.svg",
+        "German_district_key": "15002",
+        "official_name": "Halle (Saale)"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q2838",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/DEU%20Oberhausen%20COA.svg",
+        "German_district_key": "05119",
+        "official_name": "Oberhausen"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q2843",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Wappen%20L%C3%BCbeck.svg",
+        "German_district_key": "01003",
+        "official_name": "Freie und Hansestadt Lübeck"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q2843",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Wappen%20L%C3%BCbeck.svg",
+        "German_district_key": "01003",
+        "official_name": "Lubeca"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q2861",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Rostock%20Wappen.svg",
+        "German_district_key": "13003",
+        "official_name": "Rostock"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q2865",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Coat%20of%20arms%20of%20Kassel.svg",
+        "German_district_key": "06611",
+        "official_name": "Kassel"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q2871",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Stadtwappen%20der%20Stadt%20Hagen.svg",
+        "German_district_key": "05914",
+        "official_name": "Hagen"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q2880",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/DEU%20Hamm%20COA.svg",
+        "German_district_key": "05915",
+        "official_name": "Hamm"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q2899",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/DEU%20Muelheim%20an%20der%20Ruhr%20COA.svg",
+        "German_district_key": "05117",
+        "official_name": "Mülheim an der Ruhr"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q2904",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Herne%20Coat%20of%20Arms.svg",
+        "German_district_key": "05916",
+        "official_name": "Herne"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q2910",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/DEU%20Ludwigshafen%20COA.svg",
+        "German_district_key": "07314",
+        "official_name": "Ludwigshafen am Rhein"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q2916",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Osnabr%C3%BCck%20Wappen.svg",
+        "German_district_key": "03404",
+        "official_name": "Osnabrück"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q2936",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/DEU%20Oldenburg%20COA.svg",
+        "German_district_key": "03403",
+        "official_name": "Oldenburg"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q2938",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/DEU%20Leverkusen%20COA.svg",
+        "German_district_key": "05316",
+        "official_name": "Leverkusen"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q2942",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Solingen%20wappen.svg",
+        "German_district_key": "05122",
+        "official_name": "Solingen"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q2966",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Wappen%20Heidelberg.svg",
+        "German_district_key": "08221",
+        "official_name": "Heidelberg"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q2973",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Wappen%20Darmstadt.svg",
+        "German_district_key": "06411",
+        "official_name": "Darmstadt"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q2978",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Wappen%20Regensburg.svg",
+        "German_district_key": "09362",
+        "official_name": "Regensburg"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q2999",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Wappen%20von%20Wuerzburg.svg",
+        "German_district_key": "09663",
+        "official_name": "Würzburg"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q3004",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Wappen%20Ingolstadt.svg",
+        "German_district_key": "09161",
+        "official_name": "Ingolstadt"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q3014",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/DEU%20Wolfsburg%20COA.svg",
+        "German_district_key": "03103",
+        "official_name": "Wolfsburg"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q3033",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/DEU%20Goettingen%20COA.svg",
+        "official_name": "Göttingen"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q3042",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Wappen%20Offenbach%20am%20Main.svg",
+        "German_district_key": "06413",
+        "official_name": "Offenbach am Main"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q3046",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Wappen%20Pforzheim.svg",
+        "German_district_key": "08231",
+        "official_name": "Pforzheim"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q3069",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/DEU%20Bottrop%20COA.svg",
+        "German_district_key": "05512",
+        "official_name": "Bottrop"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q3075",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/DEU%20F%C3%BCrth%20COA.svg",
+        "German_district_key": "09563",
+        "official_name": "Fürth"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q3097",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/DEU%20Remscheid%20COA.svg",
+        "German_district_key": "05120",
+        "official_name": "Remscheid"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q3104",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/DEU%20Koblenz%20COA.svg",
+        "German_district_key": "07111",
+        "official_name": "Koblenz"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q3126",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Wappen%20Erlangen.svg",
+        "German_district_key": "09562",
+        "official_name": "Erlangen"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q3138",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/DEU%20Trier%20COA.svg",
+        "German_district_key": "07211",
+        "official_name": "Trier"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q3150",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Wappen%20Jena.svg",
+        "German_district_key": "16053",
+        "official_name": "Jena"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q3200",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Coat%20of%20arms%20of%20Salzgitter.svg",
+        "German_district_key": "03102",
+        "official_name": "Salzgitter"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q3214",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Wappen%20Cottbus.svg",
+        "German_district_key": "12052",
+        "official_name": "Cottbus"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q3214",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Wappen%20Cottbus.svg",
+        "German_district_key": "12052",
+        "official_name": "Chóśebuz"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q3750",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Wappen%20Gera.svg",
+        "German_district_key": "16052",
+        "official_name": "Gera"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q3758",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Kaiserslautern-Stadtwappen.svg",
+        "German_district_key": "07312"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q3798",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Wappen%20Flensburg.svg",
+        "German_district_key": "01001",
+        "official_name": "Flensburg"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q3852",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/DEU%20Worms%20COA.svg",
+        "German_district_key": "07319"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q3857",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/DEU%20Wilhelmshaven%20COA.svg",
+        "German_district_key": "03405",
+        "official_name": "Wilhelmshaven"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q3879",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Wappen%20neumuenster.svg",
+        "German_district_key": "01004",
+        "official_name": "Neumünster"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q3907",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/DEU%20Delmenhorst%20COA.svg",
+        "German_district_key": "03401"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q3923",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Wappen%20von%20Bayreuth.svg",
+        "German_district_key": "09462",
+        "official_name": "Bayreuth"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q3931",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Wappen%20Brandenburg%20an%20der%20Havel.png",
+        "German_district_key": "12051",
+        "official_name": "Brandenburg an der Havel"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q3936",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Wappen%20Bamberg.svg",
+        "German_district_key": "09461"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q3942",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Wappen%20Aschaffenburg.svg",
+        "German_district_key": "09661"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q3955",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Wappen%20Weimar.svg",
+        "German_district_key": "16055",
+        "official_name": "Weimar"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q3974",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/DEU%20Landshut%20COA.svg",
+        "German_district_key": "09261"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q3994",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Wappen%20Kempten.svg",
+        "German_district_key": "09763"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q4007",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Wappen%20Rosenheim%20Neu.svg",
+        "German_district_key": "09163"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q4024",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Wappen%20Frankfurt%20%28Oder%29.png",
+        "German_district_key": "12053"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q4100",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Stadtwappen%20der%20Stadt%20Baden-Baden.svg",
+        "German_district_key": "08211",
+        "official_name": "Baden-Baden"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q4126",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/DEU%20Schweinfurt%20COA.svg",
+        "German_district_key": "09662"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q4149",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/DEU%20Neustadt%20an%20der%20Weinstrasse%20COA.svg",
+        "German_district_key": "07316"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q4174",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Wappen%20Emden.svg",
+        "German_district_key": "03402",
+        "official_name": "Emden"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q4190",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Wappen%20Passau.svg",
+        "German_district_key": "09262"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q5870",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Wappen%20Freital.svg"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q6829",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/DEU%20Speyer%20COA.svg",
+        "German_district_key": "07318"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q6905",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/DEU%20Frankenthal%20COA.svg",
+        "German_district_key": "07311",
+        "official_name": "Frankenthal"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q6938",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Wappen%20Hof.svg",
+        "German_district_key": "09464"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q7027",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/DEU%20Straubing%20COA.svg",
+        "German_district_key": "09263"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q7042",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/DEU%20Amberg%20COA.svg",
+        "German_district_key": "09361"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q7052",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/DEU%20Landau%20in%20der%20Pfalz%20COA.svg",
+        "German_district_key": "07313",
+        "official_name": "Landau in der Pfalz"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q7070",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Wappen%20Eisenach.png",
+        "German_district_key": "16056",
+        "official_name": "Eisenach"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q14803",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/DEU%20Weiden%20in%20der%20Oberpfalz%20COA.svg",
+        "German_district_key": "09363",
+        "official_name": "Weiden in der Oberpfalz"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q14805",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/Wappen%20Kaufbeuren.svg",
+        "German_district_key": "09762"
+    },
+    {
+        "Landkreis_in_Deutschland": "http://www.wikidata.org/entity/Q14821",
+        "Lagekarte": "http://commons.wikimedia.org/wiki/Special:FilePath/DEU%20Coburg%20COA.svg",
+        "German_district_key": "09463"
+    }
+]

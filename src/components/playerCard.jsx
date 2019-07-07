@@ -2,10 +2,9 @@ import React from "react";
 
 import Paper from "@material-ui/core/es/Paper";
 import Grid from "@material-ui/core/es/Grid";
-import Avatar from "@material-ui/core/es/Avatar";
 import Typography from "@material-ui/core/es/Typography";
 
-import unicoat from "../assets/unicoat.png";
+import { crestMap } from "../assets/locations";
 import { locationsMap } from "../assets/locations";
 import styles from "./playerCard.module.scss";
 
@@ -16,7 +15,7 @@ const PlayerCard = ({ player }) => (
         {player.name}
       </Typography>
     </Grid>
-    <img className={styles.crest} src={unicoat} alt="" />
+    <img className={styles.crest} src={crestMap[player.location]} alt="" />
     <Grid container spacing={1} className={styles.player}>
       <Typography variant="h5">{locationsMap[player.location]}</Typography>
     </Grid>
