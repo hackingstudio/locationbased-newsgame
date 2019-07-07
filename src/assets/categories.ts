@@ -11,10 +11,10 @@ export const categories = {
 };
 
 export const categoryIcons = {
-  "arbeit-wirtschaft": CompareArrows,
-  "bildung": LocalFlorist,
-  "gesundheit": EuroSymbol,
-  "umwelt": LocalHospital,
+  "arbeit-wirtschaft": EuroSymbol,
+  "bildung": CompareArrows,
+  "gesundheit": LocalHospital,
+  "umwelt": LocalFlorist,
 }
 
 export type Category = keyof typeof categories;
