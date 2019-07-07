@@ -128,7 +128,7 @@ const gameReducer = (state: GameState, action: Action) => {
           result: action.payload,
         } as HistoryEntry),
       }
-    case "ADD_POINTS":
+    case "ADD_POINTS": {
       const { user, answers, result } = state;
       if (state.step !== Step.result || !user || !answers || !result) {
         return state;
@@ -145,10 +145,15 @@ const gameReducer = (state: GameState, action: Action) => {
           score: score.concat(gotPoint),
         }
       }
+    }
     case "START_GAME":
       return {
         ...state,
         ...initialGameState,
+        user: {
+          ...state.user,
+          score: [],
+        },
         step: Step.opponents,
       }
     case "START_ROUND":
