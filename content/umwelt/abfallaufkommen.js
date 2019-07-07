@@ -16,5 +16,6 @@ export default {
     question: "In welcher Stadt produzieren die Einwohner*innen mehr Müll?",
     description: "Das Netto-Aufkommen an Haushaltsabfällen pro Einwohner, Elektro-Altgeräte sind davon ausgeschlossen.",
     unit: "Netto-Abfallaufkommen",
+    map: "//datawrapper.dwcdn.net/IkABn/2/"
   },
 };
