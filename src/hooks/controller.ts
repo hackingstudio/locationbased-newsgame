@@ -64,7 +64,7 @@ const nextStepMap = {
   [Step.question]: Step.result as Step.result,
 }
 
-const MAX_ROUND = 4;
+const MAX_ROUND = 3;
 
 const gameReducer = (state: GameState, action: Action) => {
   if (process.env.NODE_ENV !== 'production') {

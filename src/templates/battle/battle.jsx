@@ -14,13 +14,13 @@ const Battle = ({ question, user, opponent, answers, setAnswer, nextStep, calcul
   const hasChoosen = !!answers.self;
 
   useEffect(() => {
-    const timer = setTimeout(() => nextStep(), 10000);
-    return () => clearTimeout(timer);
-  }, []);
-
-  useEffect(() => {
     if (hasChoosen) {
       calculateResult();
+      const timer = setTimeout(() => nextStep(), 2000);
+      return () => clearTimeout(timer);
+    } else {
+      const timer = setTimeout(() => nextStep(), 10000);
+      return () => clearTimeout(timer);
     }
   }, [hasChoosen]);
 

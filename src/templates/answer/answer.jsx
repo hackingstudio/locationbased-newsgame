@@ -30,7 +30,7 @@ const Answer = ({
   }, [defResult.winner, answers.self]);
 
   useEffect(() => {
-    const timer = setTimeout(() => startRound(), 10000);
+    const timer = setTimeout(() => startRound(), 3000);
     return () => clearTimeout(timer);
   }, []);
 
