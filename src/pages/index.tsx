@@ -58,7 +58,12 @@ const IndexPage: React.SFC<IndexPageProps> = () => {
   return (
     <div
       id="wrapper"
-      style={{ backgroundColor, padding: "3rem", minHeight: "100vh" }}
+      style={{
+        backgroundColor,
+        padding: "3rem",
+        minHeight: "100vh",
+        boxSizing: "border-box",
+      }}
     >
       <ThemeProvider theme={theme}>
         <Container maxWidth="md">
