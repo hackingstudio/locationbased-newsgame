@@ -8,6 +8,8 @@ import CircularProgress from "@material-ui/core/es/CircularProgress";
 import CountDown from "../../components/countDown";
 import PlayerCard from "../../components/playerCard";
 
+import styles from "./matchMaking.module.scss";
+
 const MatchMaking = ({ user, opponent, findOpponent, startRound }) => {
   useEffect(() => {
     if (!opponent) {
@@ -32,7 +34,7 @@ const MatchMaking = ({ user, opponent, findOpponent, startRound }) => {
       {opponent && <CountDown time={3} />}
       <Grid container spacing={3}>
         <Grid item xs={12}>
-          <PlayerCard player={player} />
+          <PlayerCard player={user} />
         </Grid>
         <Grid item xs={12} className={styles.text}>
           <Typography variant="h3" component="h2">

@@ -13,7 +13,7 @@ const PlayerStatus = ({ player, reverse = false }) => (
     <Grid item>
       <div className={styles.crest}>
         <div>
-          <img src={unicoat} />
+          <img src={unicoat} alt="" />
         </div>
         <Typography variant="subtitle1" component="h4">
           {locationsMap[player.location]}
