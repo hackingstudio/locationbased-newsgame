@@ -1,7 +1,6 @@
 import React from "react";
 
 import Grid from "@material-ui/core/es/Grid";
-import Avatar from "@material-ui/core/es/Avatar";
 import Typography from "@material-ui/core/es/Typography";
 import * as classNames from "classnames";
 
