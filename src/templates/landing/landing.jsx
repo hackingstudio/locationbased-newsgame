@@ -1,20 +1,22 @@
 import React, { useCallback, useState } from "react";
-import { emphasize, makeStyles, useTheme } from '@material-ui/core/styles';
+import { emphasize, makeStyles, useTheme } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/es/Typography";
 import TextField from "@material-ui/core/es/TextField";
 import MenuItem from "@material-ui/core/es/MenuItem";
 import Button from "@material-ui/core/es/Button";
 import Grid from "@material-ui/core/es/Grid";
-import Chip from '@material-ui/core/Chip';
-import CancelIcon from '@material-ui/icons/Cancel';
+import Chip from "@material-ui/core/Chip";
+import CancelIcon from "@material-ui/icons/Cancel";
 import Paper from "@material-ui/core/es/Paper";
 import PropTypes from "prop-types";
 import Select from "react-select";
-import clsx from 'clsx';
+import clsx from "clsx";
+import Logo from "../../assets/logo.png";
 
 import { useFormField } from "../../hooks/form";
 import { locationsList } from "../../assets/locations";
 
+import styles from "./landing.module.scss";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -22,23 +24,25 @@ const useStyles = makeStyles(theme => ({
     height: 250,
   },
   input: {
-    display: 'flex',
+    display: "flex",
     padding: 0,
-    height: 'auto',
+    height: "auto",
   },
   valueContainer: {
-    display: 'flex',
-    flexWrap: 'wrap',
+    display: "flex",
+    flexWrap: "wrap",
     flex: 1,
-    alignItems: 'center',
-    overflow: 'hidden',
+    alignItems: "center",
+    overflow: "hidden",
   },
   chip: {
     margin: theme.spacing(0.5, 0.25),
   },
   chipFocused: {
     backgroundColor: emphasize(
-      theme.palette.type === 'light' ? theme.palette.grey[300] : theme.palette.grey[700],
+      theme.palette.type === "light"
+        ? theme.palette.grey[300]
+        : theme.palette.grey[700],
       0.08,
     ),
   },
@@ -49,13 +53,13 @@ const useStyles = makeStyles(theme => ({
     fontSize: 16,
   },
   placeholder: {
-    position: 'absolute',
+    position: "absolute",
     left: 2,
     bottom: 6,
     fontSize: 16,
   },
   paper: {
-    position: 'absolute',
+    position: "absolute",
     zIndex: 1,
     marginTop: theme.spacing(1),
     left: 0,
@@ -168,7 +172,10 @@ Placeholder.propTypes = {
 
 function SingleValue(props) {
   return (
-    <Typography className={props.selectProps.classes.singleValue} {...props.innerProps}>
+    <Typography
+      className={props.selectProps.classes.singleValue}
+      {...props.innerProps}
+    >
       {props.children}
     </Typography>
   );
@@ -181,7 +188,11 @@ SingleValue.propTypes = {
 };
 
 function ValueContainer(props) {
-  return <div className={props.selectProps.classes.valueContainer}>{props.children}</div>;
+  return (
+    <div className={props.selectProps.classes.valueContainer}>
+      {props.children}
+    </div>
+  );
 }
 
 ValueContainer.propTypes = {
@@ -212,7 +223,11 @@ MultiValue.propTypes = {
 
 function Menu(props) {
   return (
-    <Paper square className={props.selectProps.classes.paper} {...props.innerProps}>
+    <Paper
+      square
+      className={props.selectProps.classes.paper}
+      {...props.innerProps}
+    >
       {props.children}
     </Paper>
   );
@@ -223,7 +238,6 @@ Menu.propTypes = {
   innerProps: PropTypes.object,
   selectProps: PropTypes.object,
 };
-
 
 const autocompleteComponents = {
   Control,
@@ -246,23 +260,31 @@ const Landing = ({ setUser, startGame }) => {
     input: base => ({
       ...base,
       color: theme.palette.text.primary,
-      '& input': {
-        font: 'inherit',
+      "& input": {
+        font: "inherit",
       },
     }),
   };
 
-  const handleSubmit = useCallback((e) => {
-    e.preventDefault();
-    if (!name || !location) {
-      return;
-    }
-    setUser(name, location.value);
-    startGame();
-  }, [name, location, setUser, startGame]);
+  const handleSubmit = useCallback(
+    e => {
+      e.preventDefault();
+      if (!name || !location) {
+        return;
+      }
+      setUser(name, location.value);
+      startGame();
+    },
+    [name, location, setUser, startGame],
+  );
   return (
     <Grid container spacing={3} component="form" onSubmit={handleSubmit}>
-      <Typography variant="h2">Revier Derby</Typography>
+      <Grid item xs={12} className={styles.logo}>
+        <img src={Logo} />
+      </Grid>
+      <Grid item xs={12} className={styles.text}>
+        <Typography variant="h5">Wie gut kennst du deine Gegend?</Typography>
+      </Grid>
       <Grid item xs={12}>
         <TextField
           fullWidth
